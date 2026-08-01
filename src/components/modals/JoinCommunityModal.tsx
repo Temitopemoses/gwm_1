@@ -7,6 +7,8 @@ interface JoinCommunityModalProps {
   onClose: () => void
 }
 
+const CONTACT_EMAIL = 'contact@globalwitnessesministry.org'
+
 export default function JoinCommunityModal({ isOpen, onClose }: JoinCommunityModalProps) {
   const [formData, setFormData] = useState({
     fullName: '',
@@ -22,11 +24,22 @@ export default function JoinCommunityModal({ isOpen, onClose }: JoinCommunityMod
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
+
+    const subject = `Community Registration: ${formData.fullName}`
+    const body = `Full Name: ${formData.fullName}
+Email: ${formData.email}
+Phone/WhatsApp: ${formData.phone}
+Location: ${formData.location}
+Area of Interest: ${formData.interest}`
+
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+
     setTimeout(() => {
       setLoading(false)
       setSubmitted(true)
     }, 600)
   }
+
 
   const handleReset = () => {
     setSubmitted(false)
