@@ -1,14 +1,74 @@
 import { motion } from 'framer-motion'
-import { Flame, Mail, Phone, MapPin, Youtube, Instagram, Twitter, Facebook } from 'lucide-react'
+import { Mail, Phone, MapPin, Youtube, Instagram, Twitter, Facebook } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
-const footerLinks = {
-  Ministry: ['Vision', 'Community Witness', 'Revival Network', 'School of Witnesses'],
-  Outreach: ['Apply for Tracts', 'Prayer Request', 'Become a Volunteer', 'Outreach Partners'],
-  Resources: ['Sermons', 'Bible Studies', 'Testimonials', 'Newsletter'],
-  Connect: ['Upcoming Events', 'Gallery', 'Contact Us', 'Give'],
+interface FooterLinkItem {
+  label: string
+  href: string
 }
 
+const footerLinks: Record<string, FooterLinkItem[]> = {
+  Ministry: [
+    { label: 'Vision', href: '/about' },
+    { label: 'Community Witness', href: '/community' },
+    { label: 'Revival Network', href: '/revival' },
+    { label: 'School of Witnesses', href: '/school' },
+  ],
+  Outreach: [
+    { label: 'Apply for Tracts', href: '/tracts' },
+    { label: 'Prayer Request', href: '/prayer' },
+    { label: 'Become a Volunteer', href: '/community' },
+    { label: 'Outreach Partners', href: '/tracts' },
+  ],
+  Resources: [
+    { label: 'Sermons', href: '/revival' },
+    { label: 'Bible Studies', href: '/school' },
+    { label: 'Testimonials', href: '/testimonials' },
+    { label: 'Newsletter', href: '#newsletter' },
+  ],
+  Connect: [
+    { label: 'Upcoming Events', href: '/revival' },
+    { label: 'Gallery', href: '/gallery' },
+    { label: 'Contact Us', href: 'mailto:contact@globalwitnessesministry.org' },
+    { label: 'Give', href: '/community' },
+  ],
+}
+
+const socialLinks = [
+  { icon: Youtube, label: 'YouTube', href: 'https://youtube.com' },
+  { icon: Instagram, label: 'Instagram', href: 'https://instagram.com' },
+  { icon: Twitter, label: 'Twitter', href: 'https://x.com' },
+  { icon: Facebook, label: 'Facebook', href: 'https://facebook.com' },
+]
+
 export default function Footer() {
+  const navigate = useNavigate()
+
+  const handleLinkClick = (e: React.MouseEvent, href: string) => {
+    if (href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('http')) {
+      return // allow default browser action
+    }
+
+    e.preventDefault()
+
+    if (href.startsWith('#')) {
+      const targetId = href.replace('#', '')
+      const elem = document.getElementById(targetId)
+      if (elem) {
+        elem.scrollIntoView({ behavior: 'smooth' })
+      } else {
+        navigate('/' + href)
+        setTimeout(() => {
+          document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth' })
+        }, 100)
+      }
+      return
+    }
+
+    navigate(href)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <footer style={{
       background: 'var(--bg-secondary)',
@@ -31,37 +91,55 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.625rem',
-              marginBottom: '1.25rem',
-            }}>
+            <button
+              onClick={(e) => handleLinkClick(e, '/')}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.625rem',
+                marginBottom: '1.25rem',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                padding: 0,
+              }}
+              aria-label="Go to Home"
+            >
               <img 
                 src="/logo.png" 
                 alt="Global Witnesses Ministry Logo" 
                 style={{ height: '56px', width: 'auto', objectFit: 'contain', mixBlendMode: 'multiply' }}
               />
-            </div>
+            </button>
             <p style={{ fontSize: '0.9375rem', marginBottom: '1.75rem', maxWidth: 280, color: 'var(--text-secondary)' }}>
               Equipping believers to carry the light of the Gospel to every corner of the earth.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
               {[
-                { icon: Mail, text: 'contact@globalwitnessesministry.org' },
-                { icon: Phone, text: '+234 800 000 0000' },
-                { icon: MapPin, text: 'London' },
-              ].map(({ icon: Icon, text }) => (
-                <div key={text} style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.625rem',
-                  color: 'var(--text-muted)',
-                  fontSize: '0.875rem',
-                }}>
+                { icon: Mail, text: 'contact@globalwitnessesministry.org', href: 'mailto:contact@globalwitnessesministry.org' },
+                { icon: Phone, text: '+234 800 000 0000', href: 'tel:+2348000000000' },
+                { icon: MapPin, text: 'London', href: 'https://maps.google.com/?q=London' },
+              ].map(({ icon: Icon, text, href }) => (
+                <a
+                  key={text}
+                  href={href}
+                  target={href.startsWith('http') ? '_blank' : undefined}
+                  rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.625rem',
+                    color: 'var(--text-muted)',
+                    fontSize: '0.875rem',
+                    textDecoration: 'none',
+                    transition: 'color 0.2s',
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.color = 'var(--primary-700)')}
+                  onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
+                >
                   <Icon size={14} color="var(--primary-600)" />
                   <span>{text}</span>
-                </div>
+                </a>
               ))}
             </div>
           </motion.div>
@@ -86,19 +164,21 @@ export default function Footer() {
                 {category}
               </h4>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                {links.map(link => (
-                  <li key={link}>
+                {links.map(({ label, href }) => (
+                  <li key={label}>
                     <a
-                      href="#"
+                      href={href}
+                      onClick={(e) => handleLinkClick(e, href)}
                       style={{
                         color: 'var(--text-secondary)',
                         fontSize: '0.9rem',
                         transition: 'color 0.2s',
+                        cursor: 'pointer',
                       }}
                       onMouseEnter={e => (e.currentTarget.style.color = 'var(--primary-700)')}
                       onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
                     >
-                      {link}
+                      {label}
                     </a>
                   </li>
                 ))}
@@ -121,15 +201,12 @@ export default function Footer() {
             © {new Date().getFullYear()} Global Witnesses Ministry. All rights reserved.
           </p>
           <div style={{ display: 'flex', gap: '0.75rem' }}>
-            {[
-              { icon: Youtube, label: 'YouTube' },
-              { icon: Instagram, label: 'Instagram' },
-              { icon: Twitter, label: 'Twitter' },
-              { icon: Facebook, label: 'Facebook' },
-            ].map(({ icon: Icon, label }) => (
+            {socialLinks.map(({ icon: Icon, label, href }) => (
               <a
                 key={label}
-                href="#"
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={label}
                 style={{
                   width: 36,
@@ -178,3 +255,4 @@ export default function Footer() {
     </footer>
   )
 }
+
