@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, Play, Sparkles } from 'lucide-react'
+import { ArrowRight, Sparkles } from 'lucide-react'
 import JoinCommunityModal from '../../components/modals/JoinCommunityModal'
 
 const headlines = [
@@ -45,6 +45,7 @@ export default function HeroSection() {
       paddingTop: '6rem',
     }}>
       <JoinCommunityModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+
       {/* Background layers */}
       <div style={{
         position: 'absolute',
@@ -59,8 +60,17 @@ export default function HeroSection() {
         <motion.div
           key={i}
           initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1.2, delay: s.delay }}
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [0.6, 1, 0.6],
+            y: [0, -30, 0],
+          }}
+          transition={{
+            duration: 6 + i,
+            delay: s.delay,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
           style={{
             position: 'absolute',
             left: s.x,
@@ -75,64 +85,100 @@ export default function HeroSection() {
         />
       ))}
 
-      <div className="container relative" style={{ zIndex: 1, width: '100%' }}>
-        <div style={{ maxWidth: '54rem', margin: '0 auto', textAlign: 'center' }}>
+      {/* Decorative ring */}
+      <motion.div
+        style={{
+          position: 'absolute',
+          right: '5%',
+          top: '15%',
+          width: 400,
+          height: 400,
+          border: '1px solid rgba(147,51,234,0.12)',
+          borderRadius: '50%',
+          pointerEvents: 'none',
+        }}
+        animate={{ rotate: 360 }}
+        transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
+      >
+        <div style={{
+          position: 'absolute',
+          top: '10%',
+          left: '10%',
+          right: '10%',
+          bottom: '10%',
+          border: '1px solid rgba(147,51,234,0.06)',
+          borderRadius: '50%',
+        }} />
+      </motion.div>
 
-          {/* Top Badge */}
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+        <div style={{
+          maxWidth: 820,
+          margin: '0 auto',
+          textAlign: 'center',
+        }}>
+          {/* Badge */}
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            style={{ marginBottom: '1.75rem' }}
+            style={{ marginBottom: '2rem' }}
           >
             <span className="badge">
-              <Sparkles size={13} />
+              <Sparkles size={12} />
               Join the Movement · Revival is Here
             </span>
           </motion.div>
 
-          {/* Dynamic Headline */}
+          {/* Called to Headline */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15, ease: 'easeOut' }}
-            style={{ marginBottom: '1.5rem' }}
+            transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
+            style={{ marginBottom: '0.5rem' }}
           >
-            <h1 style={{ color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
-              Empowered to
+            <h1 style={{
+              fontSize: 'clamp(3rem, 7vw, 5.5rem)',
+              fontWeight: 800,
+              letterSpacing: '-0.03em',
+              lineHeight: 1.08,
+              marginBottom: '0.5rem',
+            }}>
+              Called to
             </h1>
-            <div style={{ height: '1.2em', overflow: 'hidden', position: 'relative' }}>
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={headlineIdx}
-                  initial={{ y: 50, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -50, opacity: 0 }}
-                  transition={{ duration: 0.5, ease: 'easeInOut' }}
-                  style={{
-                    fontSize: 'clamp(2.5rem, 6vw, 5rem)',
-                    fontWeight: 800,
-                    letterSpacing: '-0.03em',
-                    lineHeight: 1.1,
-                  }}
-                  className="gradient-text"
-                >
-                  {headlines[headlineIdx]}
-                </motion.div>
-              </AnimatePresence>
-            </div>
           </motion.div>
+
+          <div style={{ height: '5.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '0.5rem' }}>
+            <AnimatePresence mode="wait">
+              <motion.h1
+                key={headlineIdx}
+                initial={{ opacity: 0, y: 20, filter: 'blur(8px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                exit={{ opacity: 0, y: -20, filter: 'blur(8px)' }}
+                transition={{ duration: 0.5, ease: 'easeOut' }}
+                className="gradient-text"
+                style={{
+                  fontSize: 'clamp(3rem, 7vw, 5.5rem)',
+                  fontWeight: 800,
+                  letterSpacing: '-0.03em',
+                  lineHeight: 1.08,
+                }}
+              >
+                {headlines[headlineIdx]}
+              </motion.h1>
+            </AnimatePresence>
+          </div>
 
           {/* Subtitle */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3, ease: 'easeOut' }}
+            transition={{ duration: 0.7, delay: 0.25, ease: 'easeOut' }}
             style={{
-              fontSize: 'clamp(1.1rem, 2vw, 1.35rem)',
+              fontSize: 'clamp(1.05rem, 2vw, 1.25rem)',
+              maxWidth: 560,
+              margin: '1.5rem auto 3rem',
               color: 'var(--text-secondary)',
-              maxWidth: '40rem',
-              margin: '0 auto 2.5rem',
               lineHeight: 1.7,
             }}
           >
@@ -143,7 +189,7 @@ export default function HeroSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.45, ease: 'easeOut' }}
+            transition={{ duration: 0.7, delay: 0.4, ease: 'easeOut' }}
             style={{
               display: 'flex',
               flexWrap: 'wrap',
@@ -202,7 +248,6 @@ export default function HeroSection() {
             </AnimatePresence>
           </motion.div>
 
-
         </div>
       </div>
 
@@ -249,3 +294,4 @@ export default function HeroSection() {
     </section>
   )
 }
+
