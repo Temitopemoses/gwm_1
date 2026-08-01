@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Users, MapPin, MessageCircle, ArrowRight, Globe2 } from 'lucide-react'
+import JoinCommunityModal from '../../components/modals/JoinCommunityModal'
 
 const testimonials = [
   {
@@ -29,11 +31,14 @@ const regions = [
 ]
 
 export default function CommunitySection() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   return (
     <section id="community" className="section" style={{
       background: 'var(--bg-secondary)',
       position: 'relative',
     }}>
+      <JoinCommunityModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       {/* Decorative */}
       <div style={{
         position: 'absolute',
@@ -182,6 +187,7 @@ export default function CommunitySection() {
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.97 }}
               className="btn btn-primary"
+              onClick={() => setIsModalOpen(true)}
             >
               <Users size={16} />
               Join Our Community
@@ -193,3 +199,4 @@ export default function CommunitySection() {
     </section>
   )
 }
+
