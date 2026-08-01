@@ -28,8 +28,24 @@ export default function TractsSection() {
     setSelected(prev => prev.includes(name) ? prev.filter(n => n !== name) : [...prev, name])
   }
 
+  const CONTACT_EMAIL = 'contact@globalwitnessesministry.org'
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    const subject = encodeURIComponent('Gospel Materials Request — Global Witnesses Ministry')
+    const body = encodeURIComponent(
+      `New Gospel Materials Application\n\n` +
+      `Name: ${form.name}\n` +
+      `Email: ${form.email}\n` +
+      `Phone: ${form.phone || 'Not provided'}\n` +
+      `Church/Organization: ${form.church || 'Not provided'}\n\n` +
+      `Materials Requested: ${selected.length ? selected.join(', ') : 'None selected'}\n` +
+      `Quantity: ${form.quantity}\n` +
+      `Purpose: ${form.purpose}\n\n` +
+      `Delivery Address: ${form.address}\n` +
+      `Delivery Method: ${form.delivery}`
+    )
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`
     setSubmitted(true)
   }
 

@@ -13,6 +13,8 @@ const prayerCategories = [
   'Other',
 ]
 
+const CONTACT_EMAIL = 'contact@globalwitnessesministry.org'
+
 export default function PrayerSection() {
   const [category, setCategory] = useState('')
   const [request, setRequest] = useState('')
@@ -20,10 +22,26 @@ export default function PrayerSection() {
   const [email, setEmail] = useState('')
   const [anonymous, setAnonymous] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
+    setLoading(true)
+
+    const subject = encodeURIComponent(`Prayer Request: ${category || 'General'} — Global Witnesses Ministry`)
+    const body = encodeURIComponent(
+      `New Prayer Request\n\n` +
+      `Category: ${category}\n` +
+      `Name: ${anonymous ? 'Anonymous' : (name || 'Not provided')}\n` +
+      `Email: ${anonymous ? 'Anonymous' : (email || 'Not provided')}\n\n` +
+      `Prayer Request:\n${request}`
+    )
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`
+
+    setTimeout(() => {
+      setLoading(false)
+      setSubmitted(true)
+    }, 500)
   }
 
   return (
@@ -44,12 +62,10 @@ export default function PrayerSection() {
       <div className="container" style={{ position: 'relative' }}>
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '5rem',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))',
+          gap: 'clamp(2rem, 5vw, 5rem)',
           alignItems: 'center',
-        }}
-          className="prayer-grid"
-        >
+        }}>
           {/* Left: Intro */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -104,7 +120,7 @@ export default function PrayerSection() {
               background: 'var(--bg-primary)',
               border: '1px solid var(--border-default)',
               borderRadius: 'var(--radius-3xl)',
-              padding: '2.5rem',
+              padding: 'clamp(1.5rem, 4vw, 2.5rem)',
               boxShadow: 'var(--shadow-card)',
             }}>
               {submitted ? (
@@ -171,30 +187,32 @@ export default function PrayerSection() {
                       value={request}
                       onChange={e => setRequest(e.target.value)}
                       required
-                      style={{ minHeight: 140 }}
+                      style={{ minHeight: 120 }}
                     />
                   </div>
 
                   {!anonymous && (
                     <>
-                      <div className="form-group">
-                        <label className="label">Your Name</label>
-                        <input
-                          className="input"
-                          placeholder="First name"
-                          value={name}
-                          onChange={e => setName(e.target.value)}
-                        />
-                      </div>
-                      <div className="form-group">
-                        <label className="label">Email (for prayer updates)</label>
-                        <input
-                          className="input"
-                          type="email"
-                          placeholder="your@email.com"
-                          value={email}
-                          onChange={e => setEmail(e.target.value)}
-                        />
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '1rem' }}>
+                        <div className="form-group">
+                          <label className="label">Your Name</label>
+                          <input
+                            className="input"
+                            placeholder="First name"
+                            value={name}
+                            onChange={e => setName(e.target.value)}
+                          />
+                        </div>
+                        <div className="form-group">
+                          <label className="label">Email (for prayer updates)</label>
+                          <input
+                            className="input"
+                            type="email"
+                            placeholder="your@email.com"
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
+                          />
+                        </div>
                       </div>
                     </>
                   )}
@@ -222,22 +240,21 @@ export default function PrayerSection() {
                     whileTap={{ scale: 0.97 }}
                     className="btn btn-primary"
                     style={{ width: '100%', justifyContent: 'center' }}
+                    disabled={loading}
                   >
                     <Send size={16} />
-                    Submit Prayer Request
+                    {loading ? 'Sending...' : 'Submit Prayer Request'}
                   </motion.button>
+
+                  <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textAlign: 'center' }}>
+                    Sent to our team at <strong>contact@globalwitnessesministry.org</strong>
+                  </p>
                 </form>
               )}
             </div>
           </motion.div>
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 768px) {
-          .prayer-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
-        }
-      `}</style>
     </section>
   )
 }

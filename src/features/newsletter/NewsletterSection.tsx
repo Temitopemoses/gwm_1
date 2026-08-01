@@ -7,8 +7,11 @@ const interests = [
   'Prayer Needs', 'Tract Availability', 'Ministry News',
 ]
 
+const CONTACT_EMAIL = 'contact@globalwitnessesministry.org'
+
 export default function NewsletterSection() {
   const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
   const [selected, setSelected] = useState<string[]>(['Revival Updates', 'Event Announcements'])
   const [submitted, setSubmitted] = useState(false)
 
@@ -18,7 +21,14 @@ export default function NewsletterSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (email) setSubmitted(true)
+    if (!email) return
+
+    const subject = encodeURIComponent('Newsletter Subscription — Global Witnesses Ministry')
+    const body = encodeURIComponent(
+      `New Newsletter Subscription\n\nName: ${name || 'Not provided'}\nEmail: ${email}\nInterests: ${selected.join(', ') || 'None selected'}`
+    )
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`
+    setSubmitted(true)
   }
 
   return (
@@ -43,7 +53,7 @@ export default function NewsletterSection() {
             background: 'linear-gradient(135deg, rgba(29, 78, 216,0.06), rgba(99,102,241,0.03))',
             border: '1px solid rgba(29, 78, 216,0.15)',
             borderRadius: 'var(--radius-3xl)',
-            padding: 'clamp(2.5rem, 5vw, 4rem)',
+            padding: 'clamp(2rem, 5vw, 4rem)',
             boxShadow: 'var(--shadow-card)',
           }}
         >
@@ -71,7 +81,7 @@ export default function NewsletterSection() {
             <span className="gradient-text">Revival Loop</span>
           </h2>
           <p style={{ marginBottom: '2rem' }}>
-            Get anointed updates, revival reports, event announcements, and fresh sermons delivered to your inbox. Join 8,000+ believers.
+            Get anointed updates, revival reports, event announcements, and fresh ministry news delivered to your inbox.
           </p>
 
           {/* Interest tags */}
@@ -127,16 +137,24 @@ export default function NewsletterSection() {
               <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>🎉</div>
               <div style={{ fontWeight: 700, color: '#10b981', marginBottom: '0.25rem' }}>You're in!</div>
               <div style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>
-                Welcome to the GWM family. Check your inbox for a confirmation.
+                Your email client should open shortly. Welcome to the GWM family!
               </div>
             </motion.div>
           ) : (
             <form onSubmit={handleSubmit}>
               <div style={{
-                display: 'flex',
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
                 gap: '0.75rem',
-                flexWrap: 'wrap',
+                marginBottom: '0.75rem',
               }}>
+                <input
+                  type="text"
+                  placeholder="Your name"
+                  value={name}
+                  onChange={e => setName(e.target.value)}
+                  className="input"
+                />
                 <input
                   type="email"
                   placeholder="your@email.com"
@@ -144,19 +162,18 @@ export default function NewsletterSection() {
                   onChange={e => setEmail(e.target.value)}
                   required
                   className="input"
-                  style={{ flex: 1, minWidth: 220 }}
                 />
-                <motion.button
-                  type="submit"
-                  whileHover={{ scale: 1.03, y: -2 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="btn btn-primary"
-                  style={{ flexShrink: 0 }}
-                >
-                  Subscribe
-                  <ArrowRight size={16} />
-                </motion.button>
               </div>
+              <motion.button
+                type="submit"
+                whileHover={{ scale: 1.03, y: -2 }}
+                whileTap={{ scale: 0.97 }}
+                className="btn btn-primary"
+                style={{ width: '100%', justifyContent: 'center' }}
+              >
+                Subscribe
+                <ArrowRight size={16} />
+              </motion.button>
               <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '1rem' }}>
                 No spam. Unsubscribe anytime. We respect your privacy.
               </p>
