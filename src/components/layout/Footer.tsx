@@ -48,9 +48,9 @@ export default function Footer() {
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
               {[
-                { icon: Mail, text: 'hello@gospelwitness.org' },
+                { icon: Mail, text: 'contact@globalwitnessesministry.org' },
                 { icon: Phone, text: '+234 800 000 0000' },
-                { icon: MapPin, text: 'Lagos, Nigeria' },
+                { icon: MapPin, text: 'London' },
               ].map(({ icon: Icon, text }) => (
                 <div key={text} style={{
                   display: 'flex',
