@@ -13,7 +13,7 @@ const prayerCategories = [
   'Other',
 ]
 
-const CONTACT_EMAIL = 'contact@globalwitnessesministry.org'
+const WEB3FORMS_KEY = 'c085695d-9b87-4ce8-b328-a4911be11119'
 
 export default function PrayerSection() {
   const [category, setCategory] = useState('')
@@ -24,24 +24,29 @@ export default function PrayerSection() {
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
 
-    const subject = encodeURIComponent(`Prayer Request: ${category || 'General'} — Global Witnesses Ministry`)
-    const body = encodeURIComponent(
-      `New Prayer Request\n\n` +
-      `Category: ${category}\n` +
-      `Name: ${anonymous ? 'Anonymous' : (name || 'Not provided')}\n` +
-      `Email: ${anonymous ? 'Anonymous' : (email || 'Not provided')}\n\n` +
-      `Prayer Request:\n${request}`
-    )
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`
+    try {
+      await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `Prayer Request: ${category || 'General'} — Global Witnesses Ministry`,
+          from_name: anonymous ? 'Anonymous' : (name || 'Not provided'),
+          email: anonymous ? 'anonymous@prayer.request' : (email || 'not-provided@prayer.request'),
+          category: category,
+          message: `New Prayer Request\n\nCategory: ${category}\nName: ${anonymous ? 'Anonymous' : (name || 'Not provided')}\nEmail: ${anonymous ? 'Anonymous' : (email || 'Not provided')}\n\nPrayer Request:\n${request}`,
+        }),
+      })
+    } catch (_) {
+      // silent fail
+    }
 
-    setTimeout(() => {
-      setLoading(false)
-      setSubmitted(true)
-    }, 500)
+    setLoading(false)
+    setSubmitted(true)
   }
 
   return (

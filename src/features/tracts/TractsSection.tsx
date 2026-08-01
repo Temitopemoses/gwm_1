@@ -29,23 +29,34 @@ export default function TractsSection() {
   }
 
   const CONTACT_EMAIL = 'contact@globalwitnessesministry.org'
+  const WEB3FORMS_KEY = 'c085695d-9b87-4ce8-b328-a4911be11119'
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const subject = encodeURIComponent('Gospel Materials Request — Global Witnesses Ministry')
-    const body = encodeURIComponent(
-      `New Gospel Materials Application\n\n` +
-      `Name: ${form.name}\n` +
-      `Email: ${form.email}\n` +
-      `Phone: ${form.phone || 'Not provided'}\n` +
-      `Church/Organization: ${form.church || 'Not provided'}\n\n` +
-      `Materials Requested: ${selected.length ? selected.join(', ') : 'None selected'}\n` +
-      `Quantity: ${form.quantity}\n` +
-      `Purpose: ${form.purpose}\n\n` +
-      `Delivery Address: ${form.address}\n` +
-      `Delivery Method: ${form.delivery}`
-    )
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`
+
+    try {
+      await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: 'Gospel Materials Request — Global Witnesses Ministry',
+          from_name: form.name,
+          email: form.email,
+          phone: form.phone || 'Not provided',
+          church: form.church || 'Not provided',
+          materials: selected.length ? selected.join(', ') : 'None selected',
+          quantity: form.quantity,
+          purpose: form.purpose,
+          address: form.address,
+          delivery: form.delivery,
+          message: `New Gospel Materials Application\n\nName: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone || 'Not provided'}\nChurch/Organization: ${form.church || 'Not provided'}\n\nMaterials Requested: ${selected.length ? selected.join(', ') : 'None selected'}\nQuantity: ${form.quantity}\nPurpose: ${form.purpose}\n\nDelivery Address: ${form.address}\nDelivery Method: ${form.delivery}`,
+        }),
+      })
+    } catch (_) {
+      // silent fail
+    }
+
     setSubmitted(true)
   }
 

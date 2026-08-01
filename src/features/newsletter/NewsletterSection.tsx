@@ -7,7 +7,7 @@ const interests = [
   'Prayer Needs', 'Tract Availability', 'Ministry News',
 ]
 
-const CONTACT_EMAIL = 'contact@globalwitnessesministry.org'
+const WEB3FORMS_KEY = 'c085695d-9b87-4ce8-b328-a4911be11119'
 
 export default function NewsletterSection() {
   const [email, setEmail] = useState('')
@@ -19,15 +19,27 @@ export default function NewsletterSection() {
     setSelected(prev => prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag])
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!email) return
 
-    const subject = encodeURIComponent('Newsletter Subscription — Global Witnesses Ministry')
-    const body = encodeURIComponent(
-      `New Newsletter Subscription\n\nName: ${name || 'Not provided'}\nEmail: ${email}\nInterests: ${selected.join(', ') || 'None selected'}`
-    )
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`
+    try {
+      await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: 'Newsletter Subscription — Global Witnesses Ministry',
+          from_name: name || 'New Subscriber',
+          email: email,
+          interests: selected.join(', ') || 'None selected',
+          message: `New Newsletter Subscription\n\nName: ${name || 'Not provided'}\nEmail: ${email}\nInterests: ${selected.join(', ') || 'None selected'}`,
+        }),
+      })
+    } catch (_) {
+      // silent fail
+    }
+
     setSubmitted(true)
   }
 

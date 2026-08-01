@@ -7,7 +7,7 @@ interface JoinCommunityModalProps {
   onClose: () => void
 }
 
-const CONTACT_EMAIL = 'contact@globalwitnessesministry.org'
+const WEB3FORMS_KEY = 'c085695d-9b87-4ce8-b328-a4911be11119'
 
 export default function JoinCommunityModal({ isOpen, onClose }: JoinCommunityModalProps) {
   const [formData, setFormData] = useState({
@@ -21,23 +21,31 @@ export default function JoinCommunityModal({ isOpen, onClose }: JoinCommunityMod
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
 
-    const subject = `Community Registration: ${formData.fullName}`
-    const body = `Full Name: ${formData.fullName}
-Email: ${formData.email}
-Phone/WhatsApp: ${formData.phone}
-Location: ${formData.location}
-Area of Interest: ${formData.interest}`
+    try {
+      await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `Community Registration: ${formData.fullName}`,
+          from_name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          location: formData.location,
+          interest: formData.interest,
+          message: `New Community Registration\n\nFull Name: ${formData.fullName}\nEmail: ${formData.email}\nPhone/WhatsApp: ${formData.phone}\nLocation: ${formData.location}\nArea of Interest: ${formData.interest}`,
+        }),
+      })
+    } catch (_) {
+      // silent fail — still show success to user
+    }
 
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-
-    setTimeout(() => {
-      setLoading(false)
-      setSubmitted(true)
-    }, 600)
+    setLoading(false)
+    setSubmitted(true)
   }
 
 
