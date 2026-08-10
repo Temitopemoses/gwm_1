@@ -46,14 +46,40 @@ export default function HeroSection() {
     }}>
       <JoinCommunityModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
+      {/* Hero background image */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        zIndex: 0,
+        overflow: 'hidden',
+      }}>
+        <img
+          src="/hero_worship.jpg"
+          alt=""
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center 30%',
+            opacity: 0.18,
+          }}
+        />
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(to bottom, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.92) 100%)',
+        }} />
+      </div>
+
       {/* Background layers */}
       <div style={{
         position: 'absolute',
         inset: 0,
         background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(29, 78, 216,0.18) 0%, transparent 70%)',
         pointerEvents: 'none',
+        zIndex: 0,
       }} />
-      <div className="bg-grid" style={{ position: 'absolute', inset: 0, opacity: 0.5 }} />
+      <div className="bg-grid" style={{ position: 'absolute', inset: 0, opacity: 0.5, zIndex: 0 }} />
 
       {/* Floating shapes */}
       {floatingShapes.map((s, i) => (
@@ -177,7 +203,7 @@ export default function HeroSection() {
             style={{
               fontSize: 'clamp(1.05rem, 2vw, 1.25rem)',
               maxWidth: 560,
-              margin: '1.5rem auto 3rem',
+              margin: '1.25rem auto 2rem',
               color: 'var(--text-secondary)',
               lineHeight: 1.7,
             }}
@@ -195,7 +221,7 @@ export default function HeroSection() {
               flexWrap: 'wrap',
               gap: '0.875rem',
               justifyContent: 'center',
-              marginBottom: '5rem',
+              marginBottom: '3rem',
             }}
           >
             <motion.button

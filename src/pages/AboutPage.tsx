@@ -2,6 +2,8 @@ import Navbar from '../components/layout/Navbar'
 import Footer from '../components/layout/Footer'
 import VisionSection from '../features/vision/VisionSection'
 import MinistrySection from '../features/ministry/MinistrySection'
+import MandateSection from '../features/mandate/MandateSection'
+import FaithSection from '../features/faith/FaithSection'
 import { motion } from 'framer-motion'
 import { Flame } from 'lucide-react'
 
@@ -10,10 +12,17 @@ const fadeUp = {
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } }
 }
 
+const fadeIn = {
+  hidden: { opacity: 0, scale: 0.92 },
+  show: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: 'easeOut' } }
+}
+
 const stagger = {
   hidden: {},
   show: { transition: { staggerChildren: 0.15 } }
 }
+
+
 
 export default function AboutPage() {
   return (
@@ -43,7 +52,7 @@ export default function AboutPage() {
           zIndex: -1
         }} />
 
-        <section className="section" style={{ padding: '6rem 0 4rem' }}>
+        <section className="section" style={{ padding: '3rem 0 2rem' }}>
           <div className="container">
             <motion.div
               variants={stagger}
@@ -52,13 +61,13 @@ export default function AboutPage() {
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-                gap: '4rem',
+                gap: '3rem',
                 alignItems: 'center'
               }}
             >
               {/* Left Column: Text content */}
               <motion.div variants={fadeUp}>
-                <span className="badge" style={{ marginBottom: '1.5rem' }}>The Mandate</span>
+                <span className="badge" style={{ marginBottom: '1.5rem' }}>Acts 1:8</span>
                 <h1 style={{ 
                   fontSize: 'clamp(2.5rem, 5vw, 3.75rem)', 
                   fontWeight: 800, 
@@ -67,12 +76,12 @@ export default function AboutPage() {
                   letterSpacing: '-0.02em',
                   color: 'var(--text-primary)'
                 }}>
-                  A Global <br />
+                  Witness Unto <br />
                   <span style={{
                     background: 'linear-gradient(135deg, var(--primary-600), var(--primary-400))',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent'
-                  }}>Wake-Up Call.</span>
+                  }}>Jesus Christ Globally.</span>
                 </h1>
                 
                 <div style={{ 
@@ -92,73 +101,142 @@ export default function AboutPage() {
                 </div>
               </motion.div>
 
-              {/* Right Column: Premium Visual Card */}
-              <motion.div variants={fadeUp} style={{ position: 'relative' }}>
+              {/* Right Column: Professional Visual Panel */}
+              <motion.div variants={fadeIn} style={{ position: 'relative', minHeight: '460px' }}>
+
+                {/* Floating orb — top right */}
+                <div className="animate-float" style={{
+                  position: 'absolute', top: '-24px', right: '-20px',
+                  width: 120, height: 120,
+                  borderRadius: '50%',
+                  background: 'radial-gradient(circle at 35% 35%, rgba(96,165,250,0.35), rgba(29,78,216,0.08))',
+                  border: '1px solid rgba(29,78,216,0.12)',
+                  zIndex: 0,
+                }} />
+
+                {/* Floating orb — bottom left */}
+                <div className="animate-float-reverse" style={{
+                  position: 'absolute', bottom: '-16px', left: '-20px',
+                  width: 80, height: 80,
+                  borderRadius: '50%',
+                  background: 'radial-gradient(circle at 35% 35%, rgba(251,191,36,0.28), rgba(29,78,216,0.06))',
+                  border: '1px solid rgba(251,191,36,0.15)',
+                  zIndex: 0,
+                }} />
+
+                {/* Main card */}
                 <div style={{
-                  background: 'rgba(255, 255, 255, 0.65)',
-                  backdropFilter: 'blur(24px)',
-                  WebkitBackdropFilter: 'blur(24px)',
-                  border: '1px solid rgba(29, 78, 216, 0.15)',
+                  position: 'relative', zIndex: 1,
                   borderRadius: '2rem',
-                  padding: '3rem 2.5rem',
-                  boxShadow: '0 24px 50px -12px rgba(29, 78, 216, 0.15)',
-                  position: 'relative',
-                  overflow: 'hidden'
+                  padding: '0.25rem',
+                  background: 'linear-gradient(135deg, rgba(29,78,216,0.18) 0%, rgba(96,165,250,0.10) 50%, rgba(251,191,36,0.10) 100%)',
+                  boxShadow: '0 32px 64px -16px rgba(29, 78, 216, 0.18)',
                 }}>
-                  {/* Decorative corner accent */}
                   <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    right: 0,
-                    width: '150px',
-                    height: '150px',
-                    background: 'linear-gradient(135deg, rgba(29, 78, 216, 0.1), transparent)',
-                    borderRadius: '0 2rem 0 100%',
-                  }} />
-
-                  <div style={{
-                    width: 56,
-                    height: 56,
-                    borderRadius: 16,
-                    background: 'linear-gradient(135deg, var(--primary-600), var(--primary-800))',
+                    borderRadius: '1.85rem',
+                    background: 'linear-gradient(160deg, #f8faff 0%, #eef2ff 50%, #faf8f0 100%)',
+                    padding: '2.25rem 2rem',
                     display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginBottom: '2rem',
-                    boxShadow: '0 8px 24px rgba(29, 78, 216, 0.3)'
+                    flexDirection: 'column',
+                    gap: '1.5rem',
+                    overflow: 'hidden',
+                    position: 'relative',
                   }}>
-                    <Flame size={28} color="white" />
-                  </div>
-                  
-                  <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>
-                    Arise as Soldiers
-                  </h3>
-                  
-                  <p style={{ 
-                    fontSize: '1.05rem', 
-                    lineHeight: 1.7, 
-                    color: 'var(--text-secondary)',
-                    marginBottom: '2rem'
-                  }}>
-                    We are called to violently go to the highways and the hedges to compel multitudes to come into the Kingdom and to take over all nations by force unto God, that the kingdom of this world shall become the Kingdom of our Lord Jesus Christ.
-                  </p>
 
-                  <div style={{
-                    padding: '1.25rem',
-                    background: 'rgba(29, 78, 216, 0.05)',
-                    borderRadius: '1rem',
-                    borderLeft: '4px solid var(--primary-600)'
-                  }}>
-                    <p style={{ 
-                      margin: 0, 
-                      fontWeight: 700, 
-                      color: 'var(--primary-800)',
-                      fontSize: '0.95rem',
-                      letterSpacing: '0.02em',
-                      textTransform: 'uppercase'
+                    {/* Subtle bg grid */}
+                    <div style={{
+                      position: 'absolute', inset: 0,
+                      backgroundImage: 'linear-gradient(rgba(29,78,216,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(29,78,216,0.04) 1px, transparent 1px)',
+                      backgroundSize: '40px 40px',
+                      pointerEvents: 'none',
+                    }} />
+
+                    {/* Scripture banner */}
+                    <div style={{
+                      position: 'relative',
+                      borderRadius: '1.25rem',
+                      padding: '1.25rem 1.5rem',
+                      background: 'linear-gradient(135deg, var(--primary-700) 0%, var(--primary-900) 100%)',
+                      boxShadow: '0 8px 32px rgba(29,78,216,0.30)',
+                      overflow: 'hidden',
                     }}>
-                      So, this is the message behind the name.
-                    </p>
+                      {/* inner glow */}
+                      <div style={{
+                        position: 'absolute', top: '-30px', right: '-30px',
+                        width: 120, height: 120, borderRadius: '50%',
+                        background: 'radial-gradient(circle, rgba(96,165,250,0.25), transparent 70%)',
+                        pointerEvents: 'none',
+                      }} />
+
+                      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.875rem' }}>
+                        <div style={{
+                          width: 40, height: 40, borderRadius: '0.75rem',
+                          background: 'rgba(255,255,255,0.15)',
+                          display: 'flex', alignItems: 'center', justifyContent: 'center',
+                          flexShrink: 0, backdropFilter: 'blur(8px)',
+                          border: '1px solid rgba(255,255,255,0.2)',
+                        }}>
+                          <Flame size={20} color="rgba(251,191,36,1)" />
+                        </div>
+                        <div>
+                          <p style={{
+                            margin: 0, color: 'rgba(255,255,255,0.65)',
+                            fontSize: '0.75rem', fontWeight: 600,
+                            letterSpacing: '0.08em', textTransform: 'uppercase',
+                            marginBottom: '0.35rem',
+                          }}>Our Commission</p>
+                          <p style={{
+                            margin: 0, color: '#ffffff',
+                            fontSize: '0.975rem', fontWeight: 500,
+                            lineHeight: 1.6,
+                          }}>
+                            "…ye shall be witnesses unto me…unto the uttermost part of the earth."
+                          </p>
+                          <p style={{
+                            margin: '0.5rem 0 0', color: 'rgba(251,191,36,0.9)',
+                            fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.04em',
+                          }}>Acts 1:8</p>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    {/* Mission pillars */}
+                    <div style={{
+                      borderRadius: '1.1rem',
+                      padding: '1.1rem 1.25rem',
+                      background: 'rgba(255,255,255,0.70)',
+                      border: '1px solid rgba(29,78,216,0.08)',
+                      backdropFilter: 'blur(12px)',
+                    }}>
+                      <p style={{
+                        margin: '0 0 0.75rem',
+                        fontSize: '0.72rem', fontWeight: 700,
+                        color: 'var(--primary-700)',
+                        textTransform: 'uppercase', letterSpacing: '0.09em',
+                      }}>Core Mission Pillars</p>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
+                        {[
+                          'Soul Winning & Evangelism',
+                          'Church Revival & Wake-up Call',
+                          'Kingdom Advancement Globally',
+                        ].map((pillar) => (
+                          <div key={pillar} style={{
+                            display: 'flex', alignItems: 'center', gap: '0.6rem',
+                          }}>
+                            <div style={{
+                              width: 6, height: 6, borderRadius: '50%', flexShrink: 0,
+                              background: 'linear-gradient(135deg, var(--primary-600), var(--gold-400))',
+                            }} />
+                            <span style={{
+                              fontSize: '0.855rem', fontWeight: 500,
+                              color: 'var(--text-primary)',
+                            }}>{pillar}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
                   </div>
                 </div>
               </motion.div>
@@ -174,8 +252,10 @@ export default function AboutPage() {
           marginBottom: '2rem'
         }} />
 
+        <MandateSection />
         <VisionSection />
         <MinistrySection />
+        <FaithSection />
       </main>
       <Footer />
     </>

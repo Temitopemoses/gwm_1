@@ -9,9 +9,9 @@ interface FooterLinkItem {
 
 const footerLinks: Record<string, FooterLinkItem[]> = {
   Ministry: [
-    { label: 'Vision', href: '/about' },
-    { label: 'Community Witness', href: '/community' },
-    { label: 'Revival Network', href: '/revival' },
+    { label: 'Vision & About', href: '/about' },
+    { label: 'Community Witnesses', href: '/community' },
+    { label: 'Revival Witnesses Network', href: '/revival' },
     { label: 'School of Witnesses', href: '/school' },
   ],
   Outreach: [
@@ -20,16 +20,16 @@ const footerLinks: Record<string, FooterLinkItem[]> = {
     { label: 'Become a Volunteer', href: '/community' },
     { label: 'Outreach Partners', href: '/tracts' },
   ],
-  Resources: [
-    { label: 'Sermons', href: '/revival' },
-    { label: 'Bible Studies', href: '/school' },
-    { label: 'Testimonials', href: '/testimonials' },
-    { label: 'Newsletter', href: '#newsletter' },
-  ],
+  // Resources: [
+  //   { label: 'Sermons', href: '/revival' },
+  //   { label: 'Bible Studies', href: '/school' },
+  //   { label: 'Testimonials', href: '/testimonials' },
+  //   { label: 'Newsletter', href: '#newsletter' },
+  // ],
   Connect: [
     { label: 'Upcoming Events', href: '/revival' },
     { label: 'Gallery', href: '/gallery' },
-    { label: 'Contact Us', href: 'mailto:contact@globalwitnessesministry.org' },
+    { label: 'Contact Us', href: '/contact' },
     { label: 'Give', href: '/community' },
   ],
 }
@@ -78,7 +78,7 @@ export default function Footer() {
       <div className="container">
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr',
+          gridTemplateColumns: '2fr 1fr 1fr 1fr', //
           gap: '3rem',
           marginBottom: '4rem',
         }}

@@ -1,5 +1,35 @@
 import { motion } from 'framer-motion'
-import { BookOpen, Users, Zap, HandHeart, Radio, Globe, ArrowRight } from 'lucide-react'
+import { BookOpen, Zap, HandHeart, Radio, Globe, Users, ArrowRight } from 'lucide-react'
+
+const missionPoints = [
+  {
+    number: '01',
+    color: '#1d4ed8',
+    glow: 'rgba(29,78,216,0.1)',
+    title: 'Pray and Preach Jesus Christ as Lord and Saviour Across the World',
+    description:
+      'We will continuously devote ourselves to prayer and the ministry of the Word — proclaiming Jesus Christ as the only Lord and Saviour to every nation.',
+    scripture: 'Acts 6:4',
+  },
+  {
+    number: '02',
+    color: '#7c3aed',
+    glow: 'rgba(124,58,237,0.1)',
+    title: 'Pray and Preach for a Fresh Outpouring of the Holy Spirit upon the Church Globally',
+    description:
+      'We will intercede and proclaim for the Holy Spirit to fall afresh on the Church worldwide — igniting genuine revival and supernatural power.',
+    scripture: 'Acts 1:8',
+  },
+  {
+    number: '03',
+    color: '#d97706',
+    glow: 'rgba(217,119,6,0.1)',
+    title: "Pray and Preach for God's Kingdom to Replace the Kingdoms of This World",
+    description:
+      'We will pray and preach until the kingdoms of this world become the Kingdom of our Lord and of His Christ, and He shall reign forever and ever.',
+    scripture: 'Revelation 11:15',
+  },
+]
 
 const expressions = [
   {
@@ -64,29 +94,6 @@ const expressions = [
   },
 ]
 
-const missionPoints = [
-  {
-    title: 'Witness with Holy Spirit power',
-    description: 'We shall witness for Jesus Christ through the power of the Holy Spirit globally.',
-    accent: 'Spirit-led witness to the ends of the earth.',
-  },
-  {
-    title: 'Teach every heart to know God',
-    description: 'We shall teach all men to know God and witness for Jesus Christ globally.',
-    accent: 'Teaching that turns believers into witnesses.',
-  },
-  {
-    title: 'Awaken believers to their assignment',
-    description: 'We shall awaken believers to their ultimate assignment of witness for Jesus Christ globally.',
-    accent: 'From dormant faith to active kingdom purpose.',
-  },
-  {
-    title: 'Influence every sphere of society',
-    description: 'We shall influence all systems and structures of the world for God, individually and corporately as God gives us influence globally.',
-    accent: 'Every system, every structure, every sphere.',
-  },
-]
-
 const container = {
   hidden: {},
   show: { transition: { staggerChildren: 0.1 } },
@@ -98,8 +105,23 @@ const item = {
 
 export default function MinistrySection() {
   return (
-    <section id="ministry" className="section" style={{ position: 'relative' }}>
+    <section id="ministry" className="section" style={{ position: 'relative', overflow: 'hidden' }}>
+      {/* Ambient glow */}
+      <div
+        style={{
+          position: 'absolute',
+          right: '-100px',
+          top: '20%',
+          width: '500px',
+          height: '500px',
+          background: 'radial-gradient(circle, rgba(124,58,237,0.06) 0%, transparent 70%)',
+          filter: 'blur(60px)',
+          pointerEvents: 'none',
+        }}
+      />
+
       <div className="container">
+        {/* Header */}
         <motion.div
           className="section-header"
           initial={{ opacity: 0, y: 30 }}
@@ -111,11 +133,21 @@ export default function MinistrySection() {
           <h2>
             <strong>OUR MISSION</strong>
           </h2>
-          <p style={{ maxWidth: '45rem', marginTop: '1.25rem', fontSize: '1rem', lineHeight: 1.8, color: 'var(--text-secondary)' }}>
-            We are moving with Kingdom momentum — bearing witness through Spirit-led power, training every heart, awakening believers, and influencing the world with God’s authority.
+          <p
+            style={{
+              maxWidth: '48rem',
+              marginTop: '1.25rem',
+              fontSize: '1.05rem',
+              lineHeight: 1.85,
+              color: 'var(--text-secondary)',
+            }}
+          >
+            To achieve the above God-given vision, we will do the following — praying and preaching
+            with Holy Spirit power until the whole earth knows Jesus Christ as Lord.
           </p>
         </motion.div>
 
+        {/* Mission Points — three pillars */}
         <motion.div
           variants={container}
           initial="hidden"
@@ -123,57 +155,153 @@ export default function MinistrySection() {
           viewport={{ once: true, margin: '-60px' }}
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-            gap: '1.25rem',
-            marginTop: '2rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '1.5rem',
+            marginTop: '1.5rem',
           }}
         >
-          {missionPoints.map(({ title, description, accent }, index) => (
+          {missionPoints.map(({ number, color, glow, title, description, scripture }, index) => (
             <motion.div
-              key={index}
+              key={number}
               variants={item}
-              whileHover={{ y: -6, scale: 1.02 }}
+              whileHover={{ y: -8, scale: 1.02 }}
               style={{
                 background: 'linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,250,252,0.96))',
-                border: '1px solid rgba(29, 78, 216,0.14)',
-                boxShadow: '0 20px 50px -30px rgba(29, 78, 216,0.25)',
+                border: `1px solid ${color}22`,
+                borderTop: `3px solid ${color}`,
+                boxShadow: `0 20px 50px -20px ${color}22`,
                 borderRadius: 'var(--radius-3xl)',
-                padding: '1.75rem',
-                minHeight: '220px',
+                padding: '2rem',
                 position: 'relative',
                 overflow: 'hidden',
+                cursor: 'default',
               }}
             >
-              <div style={{
-                position: 'absolute',
-                right: '-24px',
-                top: '-12px',
-                width: '120px',
-                height: '120px',
-                borderRadius: '50%',
-                background: 'rgba(29, 78, 216,0.08)',
-                filter: 'blur(18px)',
-              }} />
-              <div style={{ position: 'relative', zIndex: 1 }}>
-                <div style={{
-                  width: 44,
-                  height: 44,
-                  display: 'grid',
-                  placeItems: 'center',
+              {/* Glow */}
+              <div
+                style={{
+                  position: 'absolute',
+                  right: '-20px',
+                  bottom: '-20px',
+                  width: '140px',
+                  height: '140px',
+                  background: glow,
                   borderRadius: '50%',
-                  background: 'linear-gradient(135deg, rgba(29, 78, 216,0.18), rgba(29, 78, 216,0.05))',
-                  color: 'var(--primary-700)',
-                  fontWeight: 700,
-                  marginBottom: '1rem',
-                }}>
+                  filter: 'blur(28px)',
+                  pointerEvents: 'none',
+                }}
+              />
+
+              {/* Large number watermark */}
+              <div
+                style={{
+                  position: 'absolute',
+                  top: '1rem',
+                  right: '1.5rem',
+                  fontSize: '3rem',
+                  fontWeight: 900,
+                  color,
+                  opacity: 0.07,
+                  fontFamily: 'monospace',
+                  lineHeight: 1,
+                  pointerEvents: 'none',
+                }}
+              >
+                {index + 1}
+              </div>
+
+              <div style={{ position: 'relative', zIndex: 1 }}>
+                {/* Number badge */}
+                <div
+                  style={{
+                    width: 44,
+                    height: 44,
+                    display: 'grid',
+                    placeItems: 'center',
+                    borderRadius: '50%',
+                    background: `${color}18`,
+                    border: `1px solid ${color}30`,
+                    color,
+                    fontWeight: 800,
+                    fontSize: '0.95rem',
+                    marginBottom: '1.25rem',
+                  }}
+                >
                   {index + 1}
                 </div>
-                <h3 style={{ fontSize: '1.125rem', marginBottom: '0.85rem', color: 'var(--text-primary)' }}>{title}</h3>
-                <p style={{ margin: '0 0 1rem', lineHeight: 1.8, color: 'var(--text-secondary)' }}>{description}</p>
-                <p style={{ margin: 0, fontSize: '0.95rem', fontWeight: 600, color: 'var(--primary-700)' }}>{accent}</p>
+
+                <h3
+                  style={{
+                    fontSize: '1.05rem',
+                    fontWeight: 700,
+                    lineHeight: 1.45,
+                    marginBottom: '0.85rem',
+                    color: 'var(--text-primary)',
+                  }}
+                >
+                  {title}
+                </h3>
+
+                <p
+                  style={{
+                    margin: '0 0 1.5rem',
+                    lineHeight: 1.8,
+                    fontSize: '0.93rem',
+                    color: 'var(--text-secondary)',
+                  }}
+                >
+                  {description}
+                </p>
+
+                {/* Scripture pill */}
+                <div
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.4rem',
+                    padding: '0.35rem 0.85rem',
+                    background: `${color}10`,
+                    border: `1px solid ${color}25`,
+                    borderRadius: '999px',
+                    color,
+                    fontSize: '0.78rem',
+                    fontWeight: 700,
+                    letterSpacing: '0.03em',
+                  }}
+                >
+                  📖 {scripture}
+                </div>
               </div>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Ministry Expressions Grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.55 }}
+          style={{ marginTop: '2.5rem' }}
+        >
+          <div
+            style={{
+              textAlign: 'center',
+              marginBottom: '2rem',
+            }}
+          >
+            <span className="badge">In Action</span>
+            <h3
+              style={{
+                fontSize: '1.5rem',
+                fontWeight: 700,
+                marginTop: '0.75rem',
+                color: 'var(--text-primary)',
+              }}
+            >
+              How We Live Out the Mission
+            </h3>
+          </div>
         </motion.div>
 
         <motion.div
@@ -185,7 +313,6 @@ export default function MinistrySection() {
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
             gap: '1.5rem',
-            marginTop: '3rem',
           }}
         >
           {expressions.map(({ icon: Icon, color, gradient, border, tag, title, description, cta }) => (
@@ -204,45 +331,51 @@ export default function MinistrySection() {
               }}
               whileHover={{ y: -6, scale: 1.01 }}
             >
-              {/* Icon */}
-              <div style={{
-                width: 48,
-                height: 48,
-                background: `${color}18`,
-                border: `1px solid ${color}30`,
-                borderRadius: 12,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: '1.5rem',
-              }}>
+              <div
+                style={{
+                  width: 48,
+                  height: 48,
+                  background: `${color}18`,
+                  border: `1px solid ${color}30`,
+                  borderRadius: 12,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: '1.5rem',
+                }}
+              >
                 <Icon size={22} color={color} />
               </div>
 
-              {/* Tag */}
-              <span style={{
-                display: 'inline-block',
-                fontSize: '0.75rem',
-                fontWeight: 600,
-                color,
-                textTransform: 'uppercase',
-                letterSpacing: '0.08em',
-                marginBottom: '0.5rem',
-              }}>
+              <span
+                style={{
+                  display: 'inline-block',
+                  fontSize: '0.75rem',
+                  fontWeight: 600,
+                  color,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                  marginBottom: '0.5rem',
+                }}
+              >
                 {tag}
               </span>
 
               <h3 style={{ fontSize: '1.125rem', marginBottom: '0.75rem' }}>{title}</h3>
-              <p style={{ fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>{description}</p>
+              <p style={{ fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
+                {description}
+              </p>
 
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.375rem',
-                color,
-                fontWeight: 600,
-                fontSize: '0.875rem',
-              }}>
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.375rem',
+                  color,
+                  fontWeight: 600,
+                  fontSize: '0.875rem',
+                }}
+              >
                 {cta}
                 <ArrowRight size={14} />
               </div>

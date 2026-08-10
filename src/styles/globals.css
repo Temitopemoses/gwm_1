@@ -65,7 +65,7 @@
   --font-sans: 'Inter', 'Geist', system-ui, -apple-system, sans-serif;
 
   /* Spacing */
-  --section-py: 8rem;
+  --section-py: 5rem;
   --section-px: 1.5rem;
   --container:  80rem;
 
@@ -251,7 +251,7 @@ img { max-width: 100%; display: block; }
 /* Section header */
 .section-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
 }
 .section-header .badge { margin-bottom: 1.25rem; }
 .section-header h2 { margin-bottom: 1rem; }
@@ -366,7 +366,7 @@ select.input option {
 /* Responsive */
 @media (max-width: 768px) {
   :root {
-    --section-py: 5rem;
+    --section-py: 3rem;
   }
   h1 { font-size: 2.5rem; }
   h2 { font-size: 1.875rem; }

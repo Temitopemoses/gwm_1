@@ -10,6 +10,7 @@ const CommunityPage = lazy(() => import('./pages/CommunityPage'))
 const GalleryPage = lazy(() => import('./pages/GalleryPage'))
 const TestimonialsPage = lazy(() => import('./pages/TestimonialsPage'))
 const PrayerPage = lazy(() => import('./pages/PrayerPage'))
+const ContactPage = lazy(() => import('./pages/ContactPage'))
 
 class ErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
   constructor(props: { children: ReactNode }) {
@@ -104,6 +105,7 @@ export default function App() {
             <Route path="/gallery" element={<GalleryPage />} />
             <Route path="/testimonials" element={<TestimonialsPage />} />
             <Route path="/prayer" element={<PrayerPage />} />
+            <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
