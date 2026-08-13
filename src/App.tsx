@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { lazy, Suspense, Component, ReactNode } from 'react'
+import FloatingDonateButton from './components/layout/FloatingDonateButton'
 
 const HomePage = lazy(() => import('./pages/HomePage'))
 const AboutPage = lazy(() => import('./pages/AboutPage'))
@@ -113,6 +114,7 @@ export default function App() {
             <Route path="/invite" element={<InvitePage />} />
             <Route path="/get-involved" element={<GetInvolvedPage />} />
           </Routes>
+          <FloatingDonateButton />
         </Suspense>
       </BrowserRouter>
     </ErrorBoundary>

@@ -30,7 +30,7 @@ export default function HomePage() {
             </p>
           </div>
         </section>
-        <NewsletterSection />
+      
       </main>
       <Footer />
     </>
