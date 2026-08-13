@@ -17,10 +17,10 @@ const pillars = [
   },
   {
     icon: BookOpen,
-    color: '#1d4ed8',
-    gradientBg: 'linear-gradient(135deg, rgba(29,78,216,0.09), rgba(29,78,216,0.02))',
-    border: 'rgba(29,78,216,0.2)',
-    glowColor: 'rgba(29,78,216,0.15)',
+    color: '#be123c',
+    gradientBg: 'linear-gradient(135deg, rgba(190, 18, 60,0.09), rgba(190, 18, 60,0.02))',
+    border: 'rgba(190, 18, 60,0.2)',
+    glowColor: 'rgba(190, 18, 60,0.15)',
     number: '02',
     tag: 'Proclamation',
     title: 'Preaching Provides the Truth',
@@ -78,7 +78,7 @@ export default function MandateSection() {
           width: 800,
           height: 600,
           background:
-            'radial-gradient(ellipse, rgba(29,78,216,0.06) 0%, rgba(124,58,237,0.04) 40%, transparent 70%)',
+            'radial-gradient(ellipse, rgba(190, 18, 60,0.06) 0%, rgba(124,58,237,0.04) 40%, transparent 70%)',
           pointerEvents: 'none',
           filter: 'blur(40px)',
         }}
@@ -106,8 +106,30 @@ export default function MandateSection() {
               color: 'var(--text-secondary)',
             }}
           >
-            Is to witness unto Jesus Christ globally!
+            Is to witness unto Jesus Christ globally, with the power of the Holy Spirit.
           </p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            style={{ marginTop: '2.5rem', marginBottom: '1rem' }}
+          >
+            <img 
+              src="/cross-map.jpeg" 
+              alt="Global Mission" 
+              style={{ 
+                width: '100%', 
+                maxWidth: '760px', 
+                height: 'auto',
+                borderRadius: '1.5rem', 
+                boxShadow: '0 24px 50px rgba(190, 18, 60,0.12)', 
+                display: 'block', 
+                margin: '0 auto' 
+              }} 
+            />
+          </motion.div>
 
           {/* Core definition card */}
           <motion.div
@@ -119,11 +141,11 @@ export default function MandateSection() {
               marginTop: '2rem',
               padding: '2rem 2.5rem',
               background:
-                'linear-gradient(135deg, rgba(29,78,216,0.07), rgba(124,58,237,0.05))',
-              border: '1px solid rgba(29,78,216,0.2)',
+                'linear-gradient(135deg, rgba(190, 18, 60,0.07), rgba(124,58,237,0.05))',
+              border: '1px solid rgba(190, 18, 60,0.2)',
               borderRadius: 'var(--radius-3xl)',
               borderLeft: '4px solid var(--primary-600)',
-              boxShadow: '0 16px 40px -20px rgba(29,78,216,0.15)',
+              boxShadow: '0 16px 40px -20px rgba(190, 18, 60,0.15)',
               textAlign: 'left',
               position: 'relative',
               overflow: 'hidden',
@@ -325,9 +347,9 @@ export default function MandateSection() {
             marginTop: '2.5rem',
             padding: '2.5rem 3rem',
             background:
-              'linear-gradient(135deg, rgba(29,78,216,0.92), rgba(124,58,237,0.85))',
+              'linear-gradient(135deg, rgba(190, 18, 60,0.92), rgba(124,58,237,0.85))',
             borderRadius: 'var(--radius-3xl)',
-            boxShadow: '0 24px 60px -16px rgba(29,78,216,0.35)',
+            boxShadow: '0 24px 60px -16px rgba(190, 18, 60,0.35)',
             position: 'relative',
             overflow: 'hidden',
             textAlign: 'center',

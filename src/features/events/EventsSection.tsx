@@ -61,7 +61,7 @@ const events = [
 const typeColors: Record<string, string> = {
   'Revival Conference': '#a855f7',
   'Outreach': '#10b981',
-  'Prayer Summit': '#3b82f6',
+  'Prayer Summit': '#f43f5e',
   'Training': '#f59e0b',
   'Campus Revival': '#ec4899',
   'Crusade': '#f97316',
@@ -100,8 +100,8 @@ export default function EventsSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             style={{
-              background: 'linear-gradient(135deg, rgba(29, 78, 216,0.06), rgba(99,102,241,0.03))',
-              border: '1px solid rgba(29, 78, 216,0.2)',
+              background: 'linear-gradient(135deg, rgba(190, 18, 60,0.06), rgba(99,102,241,0.03))',
+              border: '1px solid rgba(190, 18, 60,0.2)',
               borderRadius: 'var(--radius-3xl)',
               padding: '2.5rem',
               marginBottom: '2rem',
@@ -118,8 +118,8 @@ export default function EventsSection() {
             <div style={{
               textAlign: 'center',
               flexShrink: 0,
-              background: 'rgba(29, 78, 216,0.1)',
-              border: '1px solid rgba(29, 78, 216,0.2)',
+              background: 'rgba(190, 18, 60,0.1)',
+              border: '1px solid rgba(190, 18, 60,0.2)',
               borderRadius: 'var(--radius-xl)',
               padding: '1.25rem 1.75rem',
             }}>

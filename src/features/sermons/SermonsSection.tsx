@@ -26,7 +26,7 @@ const sermons = [
     duration: '61 min',
     views: '21.5K',
     series: 'Holy Spirit Series',
-    color: '#3b82f6',
+    color: '#f43f5e',
     date: 'Jul 6, 2026',
   },
   {
@@ -113,7 +113,7 @@ export default function SermonsSection() {
             alignItems: 'center',
             justifyContent: 'center',
             flexShrink: 0,
-            boxShadow: '0 8px 24px rgba(29, 78, 216,0.3)',
+            boxShadow: '0 8px 24px rgba(190, 18, 60,0.3)',
             cursor: 'pointer',
           }}>
             <Play size={30} color="white" fill="white" />

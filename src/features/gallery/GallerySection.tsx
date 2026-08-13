@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { Images, ArrowRight } from 'lucide-react'
 
 const galleryItems = [
-  { label: 'Open Heavens 2025', desc: 'Lagos · 10,000 attendees', span: 'large', bg: 'linear-gradient(135deg, rgba(29, 78, 216,0.3), rgba(99,102,241,0.2))' },
+  { label: 'Open Heavens 2025', desc: 'Lagos · 10,000 attendees', span: 'large', bg: 'linear-gradient(135deg, rgba(190, 18, 60,0.3), rgba(99,102,241,0.2))' },
   { label: 'Street Evangelism', desc: 'Surulere, Lagos', span: 'small', bg: 'linear-gradient(135deg, rgba(236,72,153,0.3), rgba(168,85,247,0.2))' },
   { label: 'School of Witnesses', desc: 'Cohort 3 Graduation', span: 'small', bg: 'linear-gradient(135deg, rgba(59,130,246,0.3), rgba(99,102,241,0.2))' },
   { label: 'Nations Prayer Summit', desc: 'Abuja · Sept 2025', span: 'medium', bg: 'linear-gradient(135deg, rgba(245,158,11,0.3), rgba(236,72,153,0.2))' },

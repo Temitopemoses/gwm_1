@@ -48,7 +48,7 @@ export default function NewsletterSection() {
       <div style={{
         position: 'absolute',
         inset: 0,
-        background: 'radial-gradient(ellipse 70% 80% at 50% 100%, rgba(29, 78, 216,0.1) 0%, transparent 70%)',
+        background: 'radial-gradient(ellipse 70% 80% at 50% 100%, rgba(190, 18, 60,0.1) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
 
@@ -62,8 +62,8 @@ export default function NewsletterSection() {
             maxWidth: 680,
             margin: '0 auto',
             textAlign: 'center',
-            background: 'linear-gradient(135deg, rgba(29, 78, 216,0.06), rgba(99,102,241,0.03))',
-            border: '1px solid rgba(29, 78, 216,0.15)',
+            background: 'linear-gradient(135deg, rgba(190, 18, 60,0.06), rgba(99,102,241,0.03))',
+            border: '1px solid rgba(190, 18, 60,0.15)',
             borderRadius: 'var(--radius-3xl)',
             padding: 'clamp(2rem, 5vw, 4rem)',
             boxShadow: 'var(--shadow-card)',
@@ -78,7 +78,7 @@ export default function NewsletterSection() {
             alignItems: 'center',
             justifyContent: 'center',
             margin: '0 auto 1.5rem',
-            boxShadow: '0 8px 24px rgba(29, 78, 216,0.25)',
+            boxShadow: '0 8px 24px rgba(190, 18, 60,0.25)',
           }}>
             <Mail size={24} color="white" />
           </div>
@@ -115,8 +115,8 @@ export default function NewsletterSection() {
                   style={{
                     padding: '0.4rem 0.875rem',
                     borderRadius: 999,
-                    border: `1px solid ${isSelected ? 'rgba(29, 78, 216,0.35)' : 'var(--border-default)'}`,
-                    background: isSelected ? 'rgba(29, 78, 216,0.12)' : 'rgba(15,23,42,0.03)',
+                    border: `1px solid ${isSelected ? 'rgba(190, 18, 60,0.35)' : 'var(--border-default)'}`,
+                    background: isSelected ? 'rgba(190, 18, 60,0.12)' : 'rgba(15,23,42,0.03)',
                     color: isSelected ? 'var(--primary-700)' : 'var(--text-secondary)',
                     fontSize: '0.8125rem',
                     fontWeight: 500,

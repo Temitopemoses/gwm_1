@@ -4,8 +4,8 @@ import { BookOpen, Zap, HandHeart, Radio, Globe, Users, ArrowRight } from 'lucid
 const missionPoints = [
   {
     number: '01',
-    color: '#1d4ed8',
-    glow: 'rgba(29,78,216,0.1)',
+    color: '#be123c',
+    glow: 'rgba(190, 18, 60,0.1)',
     title: 'Pray and Preach Jesus Christ as Lord and Saviour Across the World',
     description:
       'We will continuously devote ourselves to prayer and the ministry of the Word — proclaiming Jesus Christ as the only Lord and Saviour to every nation.',
@@ -54,7 +54,7 @@ const expressions = [
   },
   {
     icon: BookOpen,
-    color: '#2563eb',
+    color: '#e11d48',
     gradient: 'linear-gradient(135deg, rgba(37,99,235,0.08), rgba(37,99,235,0.02))',
     border: 'rgba(37,99,235,0.18)',
     tag: 'Training',
@@ -64,9 +64,9 @@ const expressions = [
   },
   {
     icon: HandHeart,
-    color: '#1d4ed8',
-    gradient: 'linear-gradient(135deg, rgba(29, 78, 216,0.08), rgba(29, 78, 216,0.02))',
-    border: 'rgba(29, 78, 216,0.18)',
+    color: '#be123c',
+    gradient: 'linear-gradient(135deg, rgba(190, 18, 60,0.08), rgba(190, 18, 60,0.02))',
+    border: 'rgba(190, 18, 60,0.18)',
     tag: 'Outreach',
     title: 'Apply for Tracts',
     description: 'Request printed gospel tracts, evangelism handbooks, and outreach materials for your community.',
@@ -129,7 +129,7 @@ export default function MinistrySection() {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
         >
-          <span className="badge">Our Mission</span>
+          {/* <span className="badge">Our Mission</span> */}
           <h2>
             <strong>OUR MISSION</strong>
           </h2>
@@ -276,112 +276,6 @@ export default function MinistrySection() {
           ))}
         </motion.div>
 
-        {/* Ministry Expressions Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.55 }}
-          style={{ marginTop: '2.5rem' }}
-        >
-          <div
-            style={{
-              textAlign: 'center',
-              marginBottom: '2rem',
-            }}
-          >
-            <span className="badge">In Action</span>
-            <h3
-              style={{
-                fontSize: '1.5rem',
-                fontWeight: 700,
-                marginTop: '0.75rem',
-                color: 'var(--text-primary)',
-              }}
-            >
-              How We Live Out the Mission
-            </h3>
-          </div>
-        </motion.div>
-
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: '-60px' }}
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '1.5rem',
-          }}
-        >
-          {expressions.map(({ icon: Icon, color, gradient, border, tag, title, description, cta }) => (
-            <motion.div
-              key={title}
-              variants={item}
-              style={{
-                background: gradient,
-                border: `1px solid ${border}`,
-                borderRadius: 'var(--radius-3xl)',
-                padding: '2rem',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
-                position: 'relative',
-                overflow: 'hidden',
-              }}
-              whileHover={{ y: -6, scale: 1.01 }}
-            >
-              <div
-                style={{
-                  width: 48,
-                  height: 48,
-                  background: `${color}18`,
-                  border: `1px solid ${color}30`,
-                  borderRadius: 12,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: '1.5rem',
-                }}
-              >
-                <Icon size={22} color={color} />
-              </div>
-
-              <span
-                style={{
-                  display: 'inline-block',
-                  fontSize: '0.75rem',
-                  fontWeight: 600,
-                  color,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.08em',
-                  marginBottom: '0.5rem',
-                }}
-              >
-                {tag}
-              </span>
-
-              <h3 style={{ fontSize: '1.125rem', marginBottom: '0.75rem' }}>{title}</h3>
-              <p style={{ fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
-                {description}
-              </p>
-
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.375rem',
-                  color,
-                  fontWeight: 600,
-                  fontSize: '0.875rem',
-                }}
-              >
-                {cta}
-                <ArrowRight size={14} />
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
     </section>
   )

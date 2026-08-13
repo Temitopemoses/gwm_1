@@ -111,7 +111,7 @@ export default function SchoolSection() {
                     borderRadius: 'var(--radius-lg)',
                     transition: 'all 0.2s',
                   }}
-                  whileHover={{ background: 'rgba(29, 78, 216,0.06)', borderColor: 'rgba(29, 78, 216,0.2)' }}
+                  whileHover={{ background: 'rgba(190, 18, 60,0.06)', borderColor: 'rgba(190, 18, 60,0.2)' }}
                 >
                   <CheckCircle2 size={16} color="var(--primary-700)" style={{ flexShrink: 0 }} />
                   <span style={{ fontSize: '0.9375rem', color: 'var(--text-secondary)' }}>{mod}</span>

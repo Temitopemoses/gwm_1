@@ -5,10 +5,10 @@ const visions = [
   {
     icon: Users,
     number: '01',
-    color: '#1d4ed8',
-    gradientBg: 'linear-gradient(135deg, rgba(29,78,216,0.09), rgba(29,78,216,0.02))',
-    border: 'rgba(29,78,216,0.2)',
-    glow: 'rgba(29,78,216,0.12)',
+    color: '#be123c',
+    gradientBg: 'linear-gradient(135deg, rgba(190, 18, 60,0.09), rgba(190, 18, 60,0.02))',
+    border: 'rgba(190, 18, 60,0.2)',
+    glow: 'rgba(190, 18, 60,0.12)',
     title: 'Salvation of Everyone in the World',
     description:
       'To see the salvation of every soul across all the earth — that God who desires all men to be saved would see His heart fulfilled in this generation.',
@@ -62,7 +62,7 @@ export default function VisionSection() {
           width: 700,
           height: 500,
           background:
-            'radial-gradient(ellipse, rgba(29,78,216,0.07) 0%, rgba(124,58,237,0.04) 40%, transparent 70%)',
+            'radial-gradient(ellipse, rgba(190, 18, 60,0.07) 0%, rgba(124,58,237,0.04) 40%, transparent 70%)',
           pointerEvents: 'none',
           filter: 'blur(50px)',
         }}
@@ -77,25 +77,14 @@ export default function VisionSection() {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
         >
-          <span className="badge">Our Vision</span>
+        
           <h2>
             <strong>OUR VISION</strong>
           </h2>
-          <p
-            style={{
-              maxWidth: '44rem',
-              marginTop: '1.25rem',
-              fontSize: '1.05rem',
-              lineHeight: 1.85,
-              color: 'var(--text-secondary)',
-            }}
-          >
-            To see the fulfilment of God's three-fold heart for humanity — salvation for the world,
-            revival in the Church, and His Kingdom reigning over all.
-          </p>
+          
 
           {/* Vision image banner */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -105,7 +94,7 @@ export default function VisionSection() {
               borderRadius: '1.5rem',
               overflow: 'hidden',
               position: 'relative',
-              boxShadow: '0 20px 50px -12px rgba(29,78,216,0.2)',
+              boxShadow: '0 20px 50px -12px rgba(190, 18, 60,0.2)',
               maxHeight: '300px',
             }}
           >
@@ -128,7 +117,7 @@ export default function VisionSection() {
                 Revelation 7:9 · Acts 1:8
               </p>
             </div>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
 
         {/* Vision Cards */}

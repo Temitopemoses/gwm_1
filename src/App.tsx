@@ -11,6 +11,9 @@ const GalleryPage = lazy(() => import('./pages/GalleryPage'))
 const TestimonialsPage = lazy(() => import('./pages/TestimonialsPage'))
 const PrayerPage = lazy(() => import('./pages/PrayerPage'))
 const ContactPage = lazy(() => import('./pages/ContactPage'))
+const MandatePage = lazy(() => import('./pages/MandatePage'))
+const InvitePage = lazy(() => import('./pages/InvitePage'))
+const GetInvolvedPage = lazy(() => import('./pages/GetInvolvedPage'))
 
 class ErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
   constructor(props: { children: ReactNode }) {
@@ -51,12 +54,12 @@ class ErrorBoundary extends Component<{ children: ReactNode }, { hasError: boole
               padding: '0.75rem 1.75rem',
               borderRadius: '999px',
               border: 'none',
-              background: '#1d4ed8',
+              background: '#be123c',
               color: '#ffffff',
               fontSize: '0.9375rem',
               fontWeight: 600,
               cursor: 'pointer',
-              boxShadow: '0 4px 14px rgba(29, 78, 216, 0.25)'
+              boxShadow: '0 4px 14px rgba(190, 18, 60, 0.25)'
             }}
           >
             Reload Page
@@ -81,7 +84,7 @@ function LoadingScreen() {
         width: 40,
         height: 40,
         borderRadius: '50%',
-        border: '2px solid var(--primary-800, #1e40af)',
+        border: '2px solid var(--primary-800, #9f1239)',
         borderTopColor: 'var(--primary-400, #60a5fa)',
         animation: 'spin 0.8s linear infinite',
       }} />
@@ -98,6 +101,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/mandate" element={<MandatePage />} />
             <Route path="/revival" element={<RevivalPage />} />
             <Route path="/school" element={<SchoolPage />} />
             <Route path="/tracts" element={<TractsPage />} />
@@ -106,6 +110,8 @@ export default function App() {
             <Route path="/testimonials" element={<TestimonialsPage />} />
             <Route path="/prayer" element={<PrayerPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/invite" element={<InvitePage />} />
+            <Route path="/get-involved" element={<GetInvolvedPage />} />
           </Routes>
         </Suspense>
       </BrowserRouter>

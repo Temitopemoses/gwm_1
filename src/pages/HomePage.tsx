@@ -20,17 +20,16 @@ export default function HomePage() {
       <Navbar />
       <main>
         <HeroSection />
-        {/* <VisionSection />
-        <MinistrySection />
-        <CommunitySection />
-        <RevivalSection />
-        <SchoolSection />
-        <TractsSection />
-        <EventsSection />
-        <SermonsSection />
-        <GallerySection />
-        <TestimonialsSection />
-        <PrayerSection /> */}
+        <section className="section" style={{ padding: '4rem 0', background: 'rgba(190, 18, 60, 0.02)' }}>
+          <div className="container" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
+            <h2 style={{ fontSize: '1.75rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--text-primary)' }}>
+              Global Witnesses Ministry
+            </h2>
+            <p style={{ fontSize: '1.125rem', lineHeight: 1.8, color: 'var(--text-secondary)' }}>
+              Is a non-denominational Christian movement dedicated to sharing the message of Jesus Christ worldwide through the power of the Holy Spirit.
+            </p>
+          </div>
+        </section>
         <NewsletterSection />
       </main>
       <Footer />

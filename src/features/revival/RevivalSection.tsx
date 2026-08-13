@@ -160,7 +160,7 @@ export default function RevivalSection() {
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem', flex: 1, minWidth: '200px' }}>
-                  <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#1d4ed8', marginTop: '0.4rem', flexShrink: 0 }} />
+                  <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#be123c', marginTop: '0.4rem', flexShrink: 0 }} />
                   <p style={{ margin: 0, fontSize: '0.88rem', lineHeight: 1.7, color: 'var(--text-secondary)' }}>
                     <strong style={{ color: 'var(--text-primary)' }}>Community Witnesses</strong> focuses on the world of sin
                   </p>
@@ -300,7 +300,7 @@ export default function RevivalSection() {
         <div
           style={{
             position: 'absolute', inset: 0,
-            background: 'radial-gradient(ellipse 50% 60% at 85% 50%, rgba(29,78,216,0.07) 0%, transparent 70%)',
+            background: 'radial-gradient(ellipse 50% 60% at 85% 50%, rgba(190, 18, 60,0.07) 0%, transparent 70%)',
             pointerEvents: 'none',
           }}
         />

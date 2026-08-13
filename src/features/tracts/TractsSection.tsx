@@ -3,13 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Package, BookOpen, Send, HandHeart, ChevronRight, ChevronLeft, Check } from 'lucide-react'
 
 const materials = [
-  { icon: BookOpen, name: 'Gospel Tracts', description: 'Pocket-sized gospel presentations', color: '#a855f7' },
-  { icon: BookOpen, name: 'Evangelism Handbooks', description: 'Comprehensive witnessing guides', color: '#3b82f6' },
-  { icon: BookOpen, name: 'Discipleship Guides', description: 'For new believer follow-up', color: '#10b981' },
-  { icon: Send, name: 'Revival Flyers', description: 'Event promotion materials', color: '#ec4899' },
-  { icon: Package, name: 'Outreach Kits', description: 'Complete evangelism bundles', color: '#f59e0b' },
-  { icon: HandHeart, name: 'Prayer Cards', description: 'Scripture and intercession cards', color: '#f97316' },
-  { icon: BookOpen, name: 'Bible Study Materials', description: 'Small group starter kits', color: '#06b6d4' },
+  { icon: BookOpen, name: 'Gospel Tracts', description: 'Request high-quality, impactful gospel literature to distribute in your community. Empower your personal evangelism with resources that clearly communicate the message of salvation.', color: '#a855f7' },
+  { icon: BookOpen, name: 'Evangelism Handbook', description: 'Download our comprehensive guide to mastering the art of sharing your faith. Learn practical, Spirit-led strategies to boldly and effectively witness to people from all walks of life.', color: '#f43f5e' },
+  { icon: BookOpen, name: 'Discipleship Guide', description: 'Access structured tools and lessons designed to nurture new believers in their faith. Help spiritual infants grow into mature, active followers of Jesus Christ.', color: '#10b981' },
 ]
 
 const steps = ['Personal Info', 'Request Details', 'Delivery', 'Review']
@@ -66,7 +62,7 @@ export default function TractsSection() {
       <div style={{
         position: 'absolute',
         inset: 0,
-        background: 'radial-gradient(ellipse 60% 70% at 50% 50%, rgba(29, 78, 216,0.07) 0%, transparent 70%)',
+        background: 'radial-gradient(ellipse 60% 70% at 50% 50%, rgba(190, 18, 60,0.07) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
 
@@ -80,7 +76,7 @@ export default function TractsSection() {
         >
           <span className="badge">
             <Package size={12} />
-            Apply for Tracts
+            Apply
           </span>
           <h2>
             Become a Messenger.<br />
@@ -231,7 +227,7 @@ export default function TractsSection() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   margin: '0 auto 1.5rem',
-                  boxShadow: '0 8px 24px rgba(29, 78, 216,0.25)',
+                  boxShadow: '0 8px 24px rgba(190, 18, 60,0.25)',
                 }}>
                   <Check size={28} color="white" />
                 </div>
@@ -329,8 +325,8 @@ export default function TractsSection() {
                       transition={{ duration: 0.25 }}
                     >
                       <div style={{
-                        background: 'rgba(29, 78, 216,0.05)',
-                        border: '1px solid rgba(29, 78, 216,0.15)',
+                        background: 'rgba(190, 18, 60,0.05)',
+                        border: '1px solid rgba(190, 18, 60,0.15)',
                         borderRadius: 'var(--radius-xl)',
                         padding: '1.5rem',
                         marginBottom: '1.5rem',

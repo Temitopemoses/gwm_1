@@ -6,7 +6,7 @@ const beliefs = [
     number: '01',
     title: 'God',
     body: 'We believe in one God — Father, Son, and Holy Spirit; Creator of all and sovereign over all.',
-    accent: '#1d4ed8',
+    accent: '#be123c',
   },
   {
     number: '02',
@@ -60,7 +60,7 @@ const beliefs = [
     number: '10',
     title: 'Christian Living',
     body: 'We believe that believers are called to live holy, Spirit‑led lives marked by love, obedience, prayer, soul-winning, and service. Our lives must reflect Christ\'s character and advance His mission in the world.',
-    accent: '#1d4ed8',
+    accent: '#be123c',
   },
 ]
 
@@ -86,7 +86,7 @@ export default function FaithSection() {
           width: '800px',
           height: '600px',
           background:
-            'radial-gradient(ellipse, rgba(29,78,216,0.05) 0%, rgba(124,58,237,0.03) 45%, transparent 70%)',
+            'radial-gradient(ellipse, rgba(190, 18, 60,0.05) 0%, rgba(124,58,237,0.03) 45%, transparent 70%)',
           filter: 'blur(60px)',
           pointerEvents: 'none',
         }}
@@ -245,8 +245,8 @@ export default function FaithSection() {
             marginTop: '2rem',
             padding: '2rem 2.5rem',
             background:
-              'linear-gradient(135deg, rgba(29,78,216,0.06), rgba(124,58,237,0.04))',
-            border: '1px solid rgba(29,78,216,0.15)',
+              'linear-gradient(135deg, rgba(190, 18, 60,0.06), rgba(124,58,237,0.04))',
+            border: '1px solid rgba(190, 18, 60,0.15)',
             borderRadius: 'var(--radius-3xl)',
             display: 'flex',
             alignItems: 'center',
@@ -261,8 +261,8 @@ export default function FaithSection() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              background: 'linear-gradient(135deg, rgba(29,78,216,0.18), rgba(124,58,237,0.1))',
-              border: '1px solid rgba(29,78,216,0.2)',
+              background: 'linear-gradient(135deg, rgba(190, 18, 60,0.18), rgba(124,58,237,0.1))',
+              border: '1px solid rgba(190, 18, 60,0.2)',
               borderRadius: 14,
               flexShrink: 0,
             }}

@@ -4,7 +4,7 @@ import { Globe2, Target, Heart } from 'lucide-react'
 const pillars = [
   {
     icon: Target,
-    color: '#1d4ed8',
+    color: '#be123c',
     title: 'The Evangelistic Call',
     body: 'We are committed to witnessing Jesus Christ from community to community — reaching people where they live, work, and gather.',
   },
@@ -41,8 +41,8 @@ export default function CommunitySection() {
           overflow: 'hidden',
           padding: '4rem 0 3rem',
           background:
-            'linear-gradient(135deg, rgba(29,78,216,0.05) 0%, rgba(124,58,237,0.03) 100%)',
-          borderBottom: '1px solid rgba(29,78,216,0.08)',
+            'linear-gradient(135deg, rgba(190, 18, 60,0.05) 0%, rgba(124,58,237,0.03) 100%)',
+          borderBottom: '1px solid rgba(190, 18, 60,0.08)',
         }}
       >
         <div
@@ -50,7 +50,7 @@ export default function CommunitySection() {
             position: 'absolute',
             inset: 0,
             background:
-              'radial-gradient(ellipse 80% 60% at 30% 50%, rgba(29,78,216,0.08) 0%, transparent 70%)',
+              'radial-gradient(ellipse 80% 60% at 30% 50%, rgba(190, 18, 60,0.08) 0%, transparent 70%)',
             pointerEvents: 'none',
           }}
         />
@@ -77,9 +77,9 @@ export default function CommunitySection() {
                   style={{
                     fontSize: '0.75rem',
                     fontWeight: 600,
-                    color: '#1d4ed8',
-                    background: 'rgba(29,78,216,0.08)',
-                    border: '1px solid rgba(29,78,216,0.18)',
+                    color: '#be123c',
+                    background: 'rgba(190, 18, 60,0.08)',
+                    border: '1px solid rgba(190, 18, 60,0.18)',
                     borderRadius: '999px',
                     padding: '0.3rem 0.8rem',
                     letterSpacing: '0.06em',
@@ -135,7 +135,7 @@ export default function CommunitySection() {
               <div style={{
                 borderRadius: '1.75rem',
                 overflow: 'hidden',
-                boxShadow: '0 24px 56px -12px rgba(29,78,216,0.22)',
+                boxShadow: '0 24px 56px -12px rgba(190, 18, 60,0.22)',
                 position: 'relative',
               }}>
                 <img

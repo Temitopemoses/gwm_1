@@ -4,18 +4,12 @@ import { Menu, X, Globe2, Flame, ChevronDown } from 'lucide-react'
 
 import { useNavigate } from 'react-router-dom'
 
-const navLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'About Us', href: '/about' },
-  { label: 'Contact Us', href: '/contact' },
-]
-
 const expressionLinks = [
   {
     label: 'Community Witnesses',
     href: '/community',
     icon: Globe2,
-    color: '#1d4ed8',
+    color: '#be123c',
     tag: 'Community_Witnesses',
     desc: 'Evangelistic & apostolic outreach to the world',
   },
@@ -60,6 +54,29 @@ export default function Navbar() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  const navButtonStyles = {
+    background: 'none', border: 'none', cursor: 'pointer',
+    padding: '0.5rem 0.875rem',
+    color: 'var(--text-secondary)', fontSize: '0.9rem', fontWeight: 500,
+    fontFamily: 'var(--font-sans)', borderRadius: '999px', transition: 'all 0.2s',
+  }
+  const handleHover = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.currentTarget.style.background = 'rgba(15,23,42,0.05)'
+    e.currentTarget.style.color = 'var(--text-primary)'
+  }
+  const handleLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.currentTarget.style.background = 'none'
+    e.currentTarget.style.color = 'var(--text-secondary)'
+  }
+
+  const mobileNavStyles = {
+    background: 'none', border: 'none', cursor: 'pointer',
+    padding: '0.875rem 1rem',
+    color: 'var(--text-secondary)', fontSize: '1rem', fontWeight: 500,
+    fontFamily: 'var(--font-sans)', borderRadius: 12, textAlign: 'left' as const,
+    transition: 'all 0.2s',
+  }
+
   return (
     <>
       <motion.header
@@ -78,7 +95,7 @@ export default function Navbar() {
       >
         <div
           style={{
-            maxWidth: 'var(--container)',
+            maxWidth: '1200px',
             margin: '0 auto',
             display: 'flex',
             alignItems: 'center',
@@ -111,46 +128,30 @@ export default function Navbar() {
             <img 
               src="/logo.png" 
               alt="Global Witnesses Ministry Logo" 
-              style={{ height: '44px', width: 'auto', objectFit: 'contain', mixBlendMode: 'multiply' }}
+              style={{ height: '60px', width: 'auto', objectFit: 'contain', mixBlendMode: 'multiply' }}
             />
           </button>
 
           {/* Desktop Nav */}
-          <nav style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }} className="desktop-nav">
-            {navLinks.map((link) => (
-              <button
-                key={link.label}
-                onClick={() => handleNav(link.href)}
-                style={{
-                  background: 'none', border: 'none', cursor: 'pointer',
-                  padding: '0.5rem 0.875rem',
-                  color: 'var(--text-secondary)', fontSize: '0.9rem', fontWeight: 500,
-                  fontFamily: 'var(--font-sans)', borderRadius: '999px', transition: 'all 0.2s',
-                }}
-                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(15,23,42,0.05)'; e.currentTarget.style.color = 'var(--text-primary)' }}
-                onMouseLeave={e => { e.currentTarget.style.background = 'none'; e.currentTarget.style.color = 'var(--text-secondary)' }}
-              >
-                {link.label}
-              </button>
-            ))}
+          <nav style={{ display: 'flex', alignItems: 'center', gap: '0.1rem' }} className="desktop-nav">
+            <button style={navButtonStyles} onMouseEnter={handleHover} onMouseLeave={handleLeave} onClick={() => handleNav('/')}>Home</button>
+            <button style={navButtonStyles} onMouseEnter={handleHover} onMouseLeave={handleLeave} onClick={() => handleNav('/about')}>About Us</button>
+            <button style={navButtonStyles} onMouseEnter={handleHover} onMouseLeave={handleLeave} onClick={() => handleNav('/mandate')}>Our Mandate</button>
 
-            {/* Our Expressions Dropdown */}
+            {/* Our Expression Dropdown */}
             <div ref={dropdownRef} style={{ position: 'relative' }}>
               <button
                 onClick={() => setExpressionsOpen(v => !v)}
                 style={{
-                  background: expressionsOpen ? 'rgba(29,78,216,0.07)' : 'none',
-                  border: 'none', cursor: 'pointer',
-                  padding: '0.5rem 0.875rem',
+                  ...navButtonStyles,
+                  background: expressionsOpen ? 'rgba(190, 18, 60,0.07)' : 'none',
                   color: expressionsOpen ? 'var(--primary-700)' : 'var(--text-secondary)',
-                  fontSize: '0.9rem', fontWeight: 500,
-                  fontFamily: 'var(--font-sans)', borderRadius: '999px', transition: 'all 0.2s',
                   display: 'flex', alignItems: 'center', gap: '0.3rem',
                 }}
                 onMouseEnter={e => { e.currentTarget.style.background = 'rgba(15,23,42,0.05)'; e.currentTarget.style.color = 'var(--text-primary)' }}
                 onMouseLeave={e => { if (!expressionsOpen) { e.currentTarget.style.background = 'none'; e.currentTarget.style.color = 'var(--text-secondary)' } }}
               >
-                Our Expressions
+                Our Expression
                 <motion.span animate={{ rotate: expressionsOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
                   <ChevronDown size={14} />
                 </motion.span>
@@ -210,19 +211,9 @@ export default function Navbar() {
               </AnimatePresence>
             </div>
 
-            <button
-              onClick={() => handleNav('/school')}
-              style={{
-                background: 'none', border: 'none', cursor: 'pointer',
-                padding: '0.5rem 0.875rem',
-                color: 'var(--text-secondary)', fontSize: '0.9rem', fontWeight: 500,
-                fontFamily: 'var(--font-sans)', borderRadius: '999px', transition: 'all 0.2s',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.background = 'rgba(15,23,42,0.05)'; e.currentTarget.style.color = 'var(--text-primary)' }}
-              onMouseLeave={e => { e.currentTarget.style.background = 'none'; e.currentTarget.style.color = 'var(--text-secondary)' }}
-            >
-              School
-            </button>
+            <button style={navButtonStyles} onMouseEnter={handleHover} onMouseLeave={handleLeave} onClick={() => handleNav('/invite')}>Invite Us</button>
+            <button style={navButtonStyles} onMouseEnter={handleHover} onMouseLeave={handleLeave} onClick={() => handleNav('/get-involved')}>Get Involved</button>
+            <button style={navButtonStyles} onMouseEnter={handleHover} onMouseLeave={handleLeave} onClick={() => handleNav('/contact')}>Contact us</button>
           </nav>
 
           {/* CTA + Hamburger */}
@@ -232,7 +223,7 @@ export default function Navbar() {
               className="btn btn-primary desktop-nav"
               style={{ padding: '0.5rem 1.25rem', fontSize: '0.875rem' }}
             >
-              Apply for Tracts
+              Apply
             </button>
             <button
               onClick={() => setOpen(!open)}
@@ -277,44 +268,26 @@ export default function Navbar() {
               display: 'flex',
               flexDirection: 'column',
               gap: '0.375rem',
+              maxHeight: 'calc(100vh - 100px)',
+              overflowY: 'auto'
             }}
           >
-            {navLinks.map((link, i) => (
-              <motion.button
-                key={link.label}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.05, duration: 0.2 }}
-                onClick={() => handleNav(link.href)}
-                style={{
-                  background: 'none', border: 'none', cursor: 'pointer',
-                  padding: '0.875rem 1rem',
-                  color: 'var(--text-secondary)', fontSize: '1rem', fontWeight: 500,
-                  fontFamily: 'var(--font-sans)', borderRadius: 12, textAlign: 'left',
-                  transition: 'all 0.2s',
-                }}
-                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(15,23,42,0.05)'; e.currentTarget.style.color = 'var(--text-primary)' }}
-                onMouseLeave={e => { e.currentTarget.style.background = 'none'; e.currentTarget.style.color = 'var(--text-secondary)' }}
-              >
-                {link.label}
-              </motion.button>
-            ))}
+            <button style={mobileNavStyles} onMouseEnter={handleHover} onMouseLeave={handleLeave} onClick={() => handleNav('/')}>Home</button>
+            <button style={mobileNavStyles} onMouseEnter={handleHover} onMouseLeave={handleLeave} onClick={() => handleNav('/about')}>About Us</button>
+            <button style={mobileNavStyles} onMouseEnter={handleHover} onMouseLeave={handleLeave} onClick={() => handleNav('/mandate')}>Our Mandate</button>
 
-            {/* Our Expressions group in mobile */}
+            {/* Our Expression group in mobile */}
             <div>
               <button
                 onClick={() => setMobileExpressionsOpen(v => !v)}
                 style={{
-                  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                  width: '100%', padding: '0.875rem 1rem',
-                  background: mobileExpressionsOpen ? 'rgba(29,78,216,0.06)' : 'none',
-                  border: 'none', cursor: 'pointer',
+                  ...mobileNavStyles,
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%',
+                  background: mobileExpressionsOpen ? 'rgba(190, 18, 60,0.06)' : 'none',
                   color: mobileExpressionsOpen ? 'var(--primary-700)' : 'var(--text-secondary)',
-                  fontSize: '1rem', fontWeight: 500, fontFamily: 'var(--font-sans)',
-                  borderRadius: 12, transition: 'all 0.2s',
                 }}
               >
-                Our Expressions
+                Our Expression
                 <motion.span animate={{ rotate: mobileExpressionsOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
                   <ChevronDown size={15} />
                 </motion.span>
@@ -360,27 +333,17 @@ export default function Navbar() {
               </AnimatePresence>
             </div>
 
-            <button
-              onClick={() => handleNav('/school')}
-              style={{
-                background: 'none', border: 'none', cursor: 'pointer',
-                padding: '0.875rem 1rem',
-                color: 'var(--text-secondary)', fontSize: '1rem', fontWeight: 500,
-                fontFamily: 'var(--font-sans)', borderRadius: 12, textAlign: 'left',
-                transition: 'all 0.2s',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.background = 'rgba(15,23,42,0.05)'; e.currentTarget.style.color = 'var(--text-primary)' }}
-              onMouseLeave={e => { e.currentTarget.style.background = 'none'; e.currentTarget.style.color = 'var(--text-secondary)' }}
-            >
-              School
-            </button>
+            <button style={mobileNavStyles} onMouseEnter={handleHover} onMouseLeave={handleLeave} onClick={() => handleNav('/invite')}>Invite Us</button>
+            <button style={mobileNavStyles} onMouseEnter={handleHover} onMouseLeave={handleLeave} onClick={() => handleNav('/get-involved')}>Get Involved</button>
+            <button style={mobileNavStyles} onMouseEnter={handleHover} onMouseLeave={handleLeave} onClick={() => handleNav('/contact')}>Contact us</button>
+
             <div style={{ marginTop: '0.5rem', paddingTop: '0.75rem', borderTop: '1px solid rgba(15, 23, 42, 0.08)' }}>
               <button
                 onClick={() => handleNav('/tracts')}
                 className="btn btn-primary"
                 style={{ width: '100%', justifyContent: 'center' }}
               >
-                Apply for Tracts
+                Apply
               </button>
             </div>
           </motion.div>
@@ -388,11 +351,11 @@ export default function Navbar() {
       </AnimatePresence>
 
       <style>{`
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
           .desktop-nav { display: none !important; }
           .mobile-nav { display: flex !important; }
         }
-        @media (min-width: 769px) {
+        @media (min-width: 1025px) {
           .desktop-nav { display: flex !important; }
           .mobile-nav { display: none !important; }
         }

@@ -55,7 +55,7 @@ export default function TestimonialsSection() {
         transform: 'translate(-50%,-50%)',
         width: 600,
         height: 400,
-        background: 'radial-gradient(ellipse, rgba(29, 78, 216,0.07) 0%, transparent 70%)',
+        background: 'radial-gradient(ellipse, rgba(190, 18, 60,0.07) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
 
@@ -118,7 +118,7 @@ export default function TestimonialsSection() {
                     fontSize: '1rem',
                     color: 'white',
                     flexShrink: 0,
-                    boxShadow: '0 4px 12px rgba(29, 78, 216,0.25)',
+                    boxShadow: '0 4px 12px rgba(190, 18, 60,0.25)',
                   }}>
                     {testimonials[current].name.split(' ').map(n => n[0]).join('')}
                   </div>

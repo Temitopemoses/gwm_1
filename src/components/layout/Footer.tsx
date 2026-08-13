@@ -108,7 +108,7 @@ export default function Footer() {
               <img 
                 src="/logo.png" 
                 alt="Global Witnesses Ministry Logo" 
-                style={{ height: '56px', width: 'auto', objectFit: 'contain', mixBlendMode: 'multiply' }}
+                style={{ height: '80px', width: 'auto', objectFit: 'contain', mixBlendMode: 'multiply' }}
               />
             </button>
             <p style={{ fontSize: '0.9375rem', marginBottom: '1.75rem', maxWidth: 280, color: 'var(--text-secondary)' }}>
@@ -222,8 +222,8 @@ export default function Footer() {
                 }}
                 onMouseEnter={e => {
                   const t = e.currentTarget
-                  t.style.background = 'rgba(29, 78, 216, 0.1)'
-                  t.style.borderColor = 'rgba(29, 78, 216, 0.25)'
+                  t.style.background = 'rgba(190, 18, 60, 0.1)'
+                  t.style.borderColor = 'rgba(190, 18, 60, 0.25)'
                   t.style.color = 'var(--primary-700)'
                 }}
                 onMouseLeave={e => {

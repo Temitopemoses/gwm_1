@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Navbar from '../components/layout/Navbar'
 import Footer from '../components/layout/Footer'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Send, MessageSquare, Clock, CheckCircle } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, MessageSquare, Clock, CheckCircle, HandHeart, Globe2, Flame } from 'lucide-react'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -20,7 +20,7 @@ const contactInfo = [
     value: 'contact@globalwitnessesministry.org',
     sub: 'We typically reply within 24 hours',
     href: 'mailto:contact@globalwitnessesministry.org',
-    color: '#2563eb',
+    color: '#e11d48',
   },
   {
     icon: Phone,
@@ -33,18 +33,10 @@ const contactInfo = [
   {
     icon: MapPin,
     label: 'Find Us',
-    value: 'London, United Kingdom',
+    value: 'United Kingdom',
     sub: 'Global Witnesses Ministry HQ',
     href: 'https://maps.google.com/?q=London',
     color: '#dc2626',
-  },
-  {
-    icon: Clock,
-    label: 'Office Hours',
-    value: 'Mon – Sat: 9 am – 6 pm',
-    sub: 'Sunday: After service hours',
-    href: null,
-    color: '#d97706',
   },
 ]
 
@@ -100,7 +92,7 @@ export default function ContactPage() {
         <div style={{
           position: 'absolute', top: '-8%', right: '-4%',
           width: 560, height: 560, borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(29,78,216,0.07) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(190, 18, 60,0.07) 0%, transparent 70%)',
           filter: 'blur(70px)', zIndex: -1,
         }} />
         <div style={{
@@ -220,10 +212,10 @@ export default function ContactPage() {
                 transition={{ duration: 0.6 }}
                 style={{
                   background: 'rgba(255,255,255,0.9)',
-                  border: '1px solid rgba(29,78,216,0.10)',
+                  border: '1px solid rgba(190, 18, 60,0.10)',
                   borderRadius: '1.75rem',
                   padding: '2.5rem',
-                  boxShadow: '0 8px 40px rgba(29,78,216,0.08)',
+                  boxShadow: '0 8px 40px rgba(190, 18, 60,0.08)',
                   backdropFilter: 'blur(12px)',
                   position: 'relative',
                   overflow: 'hidden',
@@ -395,7 +387,7 @@ export default function ContactPage() {
                   borderRadius: '1.5rem',
                   padding: '2rem',
                   background: 'linear-gradient(140deg, var(--primary-700) 0%, var(--primary-900) 100%)',
-                  boxShadow: '0 16px 48px rgba(29,78,216,0.25)',
+                  boxShadow: '0 16px 48px rgba(190, 18, 60,0.25)',
                   position: 'relative', overflow: 'hidden',
                 }}>
                   <div style={{
@@ -443,9 +435,9 @@ export default function ContactPage() {
                   borderRadius: '1.5rem',
                   padding: '1.75rem 2rem',
                   background: 'rgba(255,255,255,0.88)',
-                  border: '1px solid rgba(29,78,216,0.09)',
+                  border: '1px solid rgba(190, 18, 60,0.09)',
                   backdropFilter: 'blur(12px)',
-                  boxShadow: '0 4px 24px rgba(29,78,216,0.07)',
+                  boxShadow: '0 4px 24px rgba(190, 18, 60,0.07)',
                 }}>
                   <p style={{
                     margin: '0 0 1rem', fontSize: '0.72rem', fontWeight: 700,
@@ -457,7 +449,6 @@ export default function ContactPage() {
                     { label: 'Apply for Gospel Tracts', href: '/tracts' },
                     { label: 'Submit a Prayer Request', href: '/prayer' },
                     { label: 'Partner With Us', href: '/community' },
-                    { label: 'School of Witnesses', href: '/school' },
                   ].map(({ label, href }) => (
                     <a
                       key={label}

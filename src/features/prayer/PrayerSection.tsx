@@ -60,7 +60,7 @@ export default function PrayerSection() {
         bottom: 0,
         width: 400,
         height: 400,
-        background: 'radial-gradient(ellipse, rgba(29, 78, 216,0.08) 0%, transparent 70%)',
+        background: 'radial-gradient(ellipse, rgba(190, 18, 60,0.08) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
 
@@ -143,7 +143,7 @@ export default function PrayerSection() {
                     alignItems: 'center',
                     justifyContent: 'center',
                     margin: '0 auto 1.5rem',
-                    boxShadow: '0 8px 24px rgba(29, 78, 216,0.25)',
+                    boxShadow: '0 8px 24px rgba(190, 18, 60,0.25)',
                   }}>
                     <Check size={28} color="white" />
                   </div>

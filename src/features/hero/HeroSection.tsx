@@ -4,10 +4,9 @@ import { ArrowRight, Sparkles } from 'lucide-react'
 import JoinCommunityModal from '../../components/modals/JoinCommunityModal'
 
 const headlines = [
-  'Carry the Gospel',
-  'Ignite Revival',
-  'Transform Nations',
-  'Witness with Power',
+  'Salvation for the World',
+  'Revival in the Church',
+  "God's Kingdom Come",
 ]
 
 const scriptures = [
@@ -18,7 +17,7 @@ const scriptures = [
 ]
 
 const floatingShapes = [
-  { size: 300, x: '10%', y: '20%', color: 'rgba(29, 78, 216,0.12)', delay: 0 },
+  { size: 300, x: '10%', y: '20%', color: 'rgba(190, 18, 60,0.12)', delay: 0 },
   { size: 200, x: '75%', y: '10%', color: 'rgba(167,139,250,0.08)', delay: 1.5 },
   { size: 150, x: '85%', y: '60%', color: 'rgba(99,102,241,0.10)', delay: 3 },
   { size: 100, x: '5%', y: '70%', color: 'rgba(147,51,234,0.15)', delay: 2 },
@@ -75,7 +74,7 @@ export default function HeroSection() {
       <div style={{
         position: 'absolute',
         inset: 0,
-        background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(29, 78, 216,0.18) 0%, transparent 70%)',
+        background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(190, 18, 60,0.18) 0%, transparent 70%)',
         pointerEvents: 'none',
         zIndex: 0,
       }} />
@@ -150,10 +149,10 @@ export default function HeroSection() {
             transition={{ duration: 0.6, ease: 'easeOut' }}
             style={{ marginBottom: '2rem' }}
           >
-            <span className="badge">
+            {/* <span className="badge">
               <Sparkles size={12} />
               Join the Movement · Revival is Here
-            </span>
+            </span> */}
           </motion.div>
 
           {/* Called to Headline */}
@@ -170,11 +169,11 @@ export default function HeroSection() {
               lineHeight: 1.08,
               marginBottom: '0.5rem',
             }}>
-              Called to
+              Called to see
             </h1>
           </motion.div>
 
-          <div style={{ height: '5.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '0.5rem' }}>
+          <div style={{ minHeight: '160px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '0.5rem' }}>
             <AnimatePresence mode="wait">
               <motion.h1
                 key={headlineIdx}
