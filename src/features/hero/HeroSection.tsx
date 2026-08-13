@@ -14,6 +14,8 @@ const scriptures = [
   { ref: 'Acts 1:8', text: '"You will receive power when the Holy Spirit has come upon you."' },
   { ref: 'Isaiah 60:1', text: '"Arise, shine, for your light has come."' },
   { ref: 'Mark 16:15', text: '"Go into all the world and proclaim the gospel."' },
+  { ref: 'Act 1:22,', text: '"You must be witnesses of these things."'},
+  { ref: 'luke 4:18', text: '"The Spirit of the Lord is upon me, because he has anointed me to proclaim good news to the poor."'}
 ]
 
 const floatingShapes = [
@@ -207,7 +209,7 @@ export default function HeroSection() {
               lineHeight: 1.7,
             }}
           >
-            A community of bold believers committed to advancing the Kingdom of God through prayer, revival, and radical witness.
+            A community of bold believers committed to advancing the Kingdom of God through prayer, preaching and soul winning.
           </motion.p>
 
           {/* CTA Buttons */}
