@@ -79,7 +79,7 @@ export default function TractsSection() {
             Apply
           </span>
           <h2>
-            Become a Messenger.<br />
+            Become a Witness.<br />
             <span className="gradient-text">Share the Gospel.</span>
           </h2>
           <p>

@@ -14,11 +14,11 @@ const expressionLinks = [
     desc: 'Evangelistic & apostolic outreach to the world',
   },
   {
-    label: 'Revival Witnesses Network',
+    label: 'Revival Witnesses',
     href: '/revival',
     icon: Flame,
     color: '#db2777',
-    tag: 'Revival_Witnesses_Network',
+    tag: 'Revival Witnesses',
     desc: 'Revival & empowerment for the Church',
   },
 ]

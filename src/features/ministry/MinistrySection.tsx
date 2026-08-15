@@ -142,8 +142,7 @@ export default function MinistrySection() {
               color: 'var(--text-secondary)',
             }}
           >
-            To achieve the above God-given vision, we will do the following — praying and preaching
-            with Holy Spirit power until the whole earth knows Jesus Christ as Lord.
+            To achieve the above God-given vision, we will do the following:
           </p>
         </motion.div>
 

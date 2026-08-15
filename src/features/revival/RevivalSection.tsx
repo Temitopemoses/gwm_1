@@ -24,21 +24,22 @@ const pillars = [
 
 const upcomingRevival = [
   {
-    title: 'Global Revival Moment',
+    title: 'Revival Network',
     date: 'This Saturday',
     location: 'Online (Zoom & YouTube)',
     type: 'Weekly Meeting',
     status: 'Join Now',
+    Time: '5pm GMT+1',
   },
   {
-    title: 'Global Revival Moment',
+    title: 'Revival Network',
     date: 'Next Saturday',
     location: 'Online (Zoom & YouTube)',
     type: 'Weekly Meeting',
     status: 'Upcoming',
   },
   {
-    title: 'Global Revival Moment',
+    title: 'Revival Network',
     date: 'Following Saturday',
     location: 'Online (Zoom & YouTube)',
     type: 'Weekly Meeting',
@@ -110,8 +111,8 @@ export default function RevivalSection() {
                     textTransform: 'uppercase',
                   }}
                 >
-                  Revival_Witnesses_Network
-                </span>
+                  Revival_Witnesses
+                  </span>
               </div>
 
               <h1
